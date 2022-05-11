@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/uiDesigning/AccountMgrForm.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/uiDesigning/ClientLoanForm.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/uiDesigning/ClientMainForm.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/uiDesigning/DailyPaymentForm.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/uiDesigning/FinancialProdForm.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/uiDesigning/TransferForm.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/uiDesigning/WithdrawAppointment.java" charset="GBK" />
+  </component>
+</project>
