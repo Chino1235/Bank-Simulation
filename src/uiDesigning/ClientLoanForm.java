@@ -40,6 +40,7 @@ public class ClientLoanForm {
 
         mainFrame.setSize(300,300);
         mainFrame.setVisible(true);
+        mainFrame.pack();
 
         timetxt.setSize(200,50);
         profiletxt.setSize(200,50);

@@ -45,6 +45,7 @@ public class ClientMainForm {
         mainFrame.setVisible(true);
         mainFrame.setTitle("村镇银行客户端");
         mainFrame.setLocation(500,50);
+        mainFrame.pack();
 
         mainFrame.addWindowListener(new WindowAdapter() {
             @Override
