@@ -18,7 +18,7 @@ public class WithdrawAppointment {
     Panel p2 = new Panel();
     Panel p3 = new Panel();
 
-    Frame mainFrame = new Frame();
+     Frame mainFrame = new Frame();
 
     public WithdrawAppointment(){
         mainFrame.setLayout(new GridLayout(3,1));
@@ -39,7 +39,7 @@ public class WithdrawAppointment {
 
         mainFrame.setSize(300,300);
         mainFrame.setVisible(true);
-        mainFrame.pack();
+
 
         timetxt.setSize(200,50);
         profiletxt.setSize(200,50);

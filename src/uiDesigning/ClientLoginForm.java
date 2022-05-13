@@ -1,19 +1,16 @@
 package uiDesigning;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class ClientLoanForm {
-    Label time = new Label("期限：");
-    Label profile = new Label("金额：");
-    TextField timetxt = new TextField();
-    TextField profiletxt = new TextField();
+public class ClientLoginForm {
+    Label account = new Label("账号：");
+    Label password = new Label("密码：");
+    TextField accounttxt = new TextField();
+    TextField passtxt = new TextField();
     Button confirm = new Button("确定");
-    Button cancel = new Button("取消");
+    Label message = new Label();
 
     Panel p1 = new Panel();
     Panel p2 = new Panel();
@@ -21,30 +18,32 @@ public class ClientLoanForm {
 
     Frame mainFrame = new Frame();
 
-    public ClientLoanForm(){
+    public ClientLoginForm(){
         mainFrame.setLayout(new GridLayout(3,1));
 
         mainFrame.add(p1);
         p1.setLayout(new BorderLayout());
-        p1.add(time,BorderLayout.WEST);
-        p1.add(timetxt);
+        p1.add(account,BorderLayout.WEST);
+        p1.add(accounttxt);
 
         mainFrame.add(p2);
         p2.setLayout(new BorderLayout());
-        p2.add(profile,BorderLayout.WEST);
-        p2.add(profiletxt);
+        p2.add(password,BorderLayout.WEST);
+        p2.add(passtxt);
 
         mainFrame.add(p3);
-        p3.add(cancel);
         p3.add(confirm);
+        p3.add(message);
+
 
         mainFrame.setSize(300,300);
         mainFrame.setVisible(true);
+        mainFrame.setTitle("客户登录");
+        mainFrame.pack();
 
-        mainFrame.setTitle("办理贷款");
-
-        timetxt.setSize(200,50);
-        profiletxt.setSize(200,50);
+        accounttxt.setSize(200,50);
+        passtxt.setSize(200,50);
+        passtxt.setEchoChar('*');
 
         mainFrame.addWindowListener(new WindowAdapter() {
             @Override
@@ -53,6 +52,11 @@ public class ClientLoanForm {
             }
         });
 
-        cancel.addActionListener(e -> mainFrame.setVisible(false));
+
     }
+
+    public static void main(String[] args) {
+        new ClientLoginForm();
+    }
+
 }

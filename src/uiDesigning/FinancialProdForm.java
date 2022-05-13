@@ -46,13 +46,14 @@ public class FinancialProdForm {
         p4.add(confirm);
 
         mainFrame.setVisible(true);
-        mainFrame.pack();
+        mainFrame.setSize(300,300);
         mainFrame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 mainFrame.setVisible(false);
             }
         });
+        mainFrame.setTitle("¹ºÂòÀí²Æ");
 
         cancel.addActionListener(e -> mainFrame.setVisible(false));
     }

@@ -15,7 +15,8 @@ public class ClientMainForm {
     public Button transfer = new Button("转账");
     public Button account = new Button("修改密码");
     public Button exit = new Button("退出");
-    public Label welcome = new Label("欢饮使用村镇银行客户端");
+    public Button calculator = new Button("计算器");
+    public Label welcome = new Label("欢迎使用村镇银行客户端");
 
     public Panel pleft = new Panel();
     public Panel pright = new Panel();
@@ -25,7 +26,7 @@ public class ClientMainForm {
     public ClientMainForm(){
         mainFrame.setLayout(new BorderLayout());
         pleft.setLayout(new GridLayout(4,1));
-        pright.setLayout(new GridLayout(4,1));
+        pright.setLayout(new GridLayout(5,1));
         Font f = new Font("微软雅黑",Font.PLAIN,20);
 
         mainFrame.add(pleft,BorderLayout.WEST);
@@ -38,6 +39,7 @@ public class ClientMainForm {
         pright.add(dailyLifePayment);
         pright.add(transfer);
         pright.add(account);
+        pright.add(calculator);
         pright.add(exit);
 
         mainFrame.setSize(700,700);
@@ -56,11 +58,17 @@ public class ClientMainForm {
         /*
          * 取款预约
          */
-        withdrawAppointment.addActionListener(e -> new WithdrawAppointment());
+        withdrawAppointment.addActionListener(e -> {
+            WithdrawAppointment w=new WithdrawAppointment();
+            w.mainFrame.setTitle("预约取款");
+        });
         /*
          * 存款预约
          */
-        depositAppointment.addActionListener(e -> new WithdrawAppointment());
+        depositAppointment.addActionListener(e -> {
+            WithdrawAppointment w = new WithdrawAppointment();
+            w.mainFrame.setTitle("预约存款");
+        });
         /*
          * @method
          */
@@ -78,9 +86,9 @@ public class ClientMainForm {
 
         account.addActionListener(e -> new AccountMgrForm());
 
-        exit.addActionListener(e -> {
+        calculator.addActionListener(e -> new Calculator());
 
-        });
+        exit.addActionListener(e -> System.exit(0));
     }
 
     public static void main(String[] args) {

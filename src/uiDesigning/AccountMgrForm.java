@@ -47,7 +47,8 @@ public class AccountMgrForm {
         mainFrame.add(p3);
         mainFrame.add(p4);
         mainFrame.setVisible(true);
-        mainFrame.pack();
+        mainFrame.setTitle("ÐÞ¸ÄÃÜÂë");
+        mainFrame.setSize(300,300);
         mainFrame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
