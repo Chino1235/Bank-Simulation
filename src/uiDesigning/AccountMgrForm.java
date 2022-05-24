@@ -61,5 +61,7 @@ public class AccountMgrForm {
         confirmtxt.setEchoChar('*');
         newtxt.setEchoChar('*');
         oldtxt.setEchoChar('*');
+
+        
     }
 }
