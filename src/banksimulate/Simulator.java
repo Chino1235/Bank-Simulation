@@ -14,16 +14,12 @@ public class Simulator {
      */
     public static final double YearlyInterestofLDWW = 0.0155;
 
-<<<<<<< HEAD
-    static Client client = new Client("ÐìÕãä¿","ÐìÕãä¿Å£±Æ666","666666",0);
-=======
+
+    static Client client = new Client("John","62170009666666666666666","000000",0);
     public static final String DBDRIVER = "org.gjt.mm.mysql.Driver";
     public static final String DBURL = "jdbc:mysql://localhost:3306/resources";
     public static final String DBUSER = "root";
     public static final String DBPASS = "root";
-
-    static Client client = new Client("John","62170009666666666666666","000000",0);
->>>>>>> origin/master
 
     public static void menu(){
         System.out.println("©³©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©·");
