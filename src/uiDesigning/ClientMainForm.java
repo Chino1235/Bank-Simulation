@@ -16,6 +16,7 @@ public class ClientMainForm {
     public Button account = new Button("修改密码");
     public Button exit = new Button("退出");
     public Button calculator = new Button("计算器");
+    public Button xiangqin = new Button("查看详单");
     public Label welcome = new Label("欢迎使用村镇银行客户端");
 
     public Panel pleft = new Panel();
@@ -25,7 +26,7 @@ public class ClientMainForm {
 
     public ClientMainForm(){
         mainFrame.setLayout(new BorderLayout());
-        pleft.setLayout(new GridLayout(4,1));
+        pleft.setLayout(new GridLayout(5,1));
         pright.setLayout(new GridLayout(5,1));
         Font f = new Font("微软雅黑",Font.PLAIN,20);
 
@@ -36,6 +37,7 @@ public class ClientMainForm {
         pleft.add(depositAppointment);
         pleft.add(financialProducts);
         pleft.add(makeloan);
+        pleft.add(xiangqin);
         pright.add(dailyLifePayment);
         pright.add(transfer);
         pright.add(account);
@@ -89,6 +91,10 @@ public class ClientMainForm {
         calculator.addActionListener(e -> new Calculator());
 
         exit.addActionListener(e -> System.exit(0));
+
+        xiangqin.addActionListener(e->{
+            //todo:查看详单
+        });
     }
 
     public static void main(String[] args) {
