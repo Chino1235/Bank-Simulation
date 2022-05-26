@@ -5,57 +5,57 @@ import java.util.Scanner;
 
 public class Customer extends FinancingSystem {
     public static void Buy(){
-        //ç¼–å†™5ä¸ªå•†å“æ•°æ®
+        //±àĞ´5¸öÉÌÆ·Êı¾İ
         Good[] goods = new Good[3];
-        goods[0] =new Good(1000,10000,"ç¬”è®°æœ¬") ;
-        goods[1] =new Good(1001,20000,"è¥¿çº¢æŸ¿") ;
-        goods[2] =new Good(1002,50000,"æ–°èƒ½æº") ;
+        goods[0] =new Good(1000,10000,"±Ê¼Ç±¾") ;
+        goods[1] =new Good(1001,20000,"Î÷ºìÊÁ") ;
+        goods[2] =new Good(1002,50000,"ĞÂÄÜÔ´") ;
 
-        //2.å±•ç¤ºæ•°æ®
-        System.out.println("----------åŸºé‡‘å•†åŸ---------");
+        //2.Õ¹Ê¾Êı¾İ
+        System.out.println("----------»ù½ğÉÌ³Ç---------");
         System.out.println(Arrays.toString(goods));
         int i = 0;
-        //3.å¾ªç¯æ¥æ”¶è´­ä¹°æ•°æ®
+        //3.Ñ­»·½ÓÊÕ¹ºÂòÊı¾İ
         Scanner sc  = new Scanner(System.in);
         String  flag ="Y";
-        while("Y".equals(flag)){
-            System.out.println("è¯·è¾“å…¥è´­ä¹°å•†å“çš„åºå·(å‰æ–¹1å¼€å¤´ä¸ºå•†å“åºå·)");
+        do{
+            System.out.println("ÇëÊäÈë¹ºÂòÉÌÆ·µÄĞòºÅ(Ç°·½1¿ªÍ·ÎªÉÌÆ·ĞòºÅ)");
             int id = sc.nextInt();
-            //é‡å¤å˜é‡
+            //ÖØ¸´±äÁ¿
             int count=0;
             double money=0;
 
             switch(id){
                 case 1000:
-                    System.out.println("è¯·è¾“å…¥è´­ä¹°æ•°é‡");
+                    System.out.println("ÇëÊäÈë¹ºÂòÊıÁ¿");
                     count = sc.nextInt();
                     money =count* Arrays.stream(goods).count();
-                    System.out.println("æ‚¨è´­ä¹°ç¬”è®°æœ¬é‡‘è"+count+"ä»½ã€‚ä¸€å…±èŠ±è´¹"+10000*count+"å…ƒ");
-                    System.out.println("ç»§ç»­è¾“å…¥è¯·è¾“å…¥Yï¼Œç»“æŸè¯·è¾“å…¥N");
+                    System.out.println("Äú¹ºÂò±Ê¼Ç±¾½ğÈÚ"+count+"·İ¡£Ò»¹²»¨·Ñ"+10000*count+"Ôª");
+                    System.out.println("¼ÌĞøÊäÈëÇëÊäÈëy£¬½áÊøÇëÊäÈën");
                     flag = sc.next();
                     break;
                 case 1001:
-                    System.out.println("è¯·è¾“å…¥è´­ä¹°æ•°é‡");
+                    System.out.println("ÇëÊäÈë¹ºÂòÊıÁ¿");
                     count = sc.nextInt();
                     money =count;
-                    System.out.println("æ‚¨è´­ä¹°è¥¿çº¢æŸ¿é‡‘è"+count+"ä»½ã€‚ä¸€å…±èŠ±è´¹"+20000*count+"å…ƒ");
-                    System.out.println("ç»§ç»­è¾“å…¥è¯·è¾“å…¥Yï¼Œç»“æŸè¯·è¾“å…¥N");
+                    System.out.println("Äú¹ºÂòÎ÷ºìÊÁ½ğÈÚ"+count+"·İ¡£Ò»¹²»¨·Ñ"+20000*count+"Ôª");
+                    System.out.println("¼ÌĞøÊäÈëÇëÊäÈëy£¬½áÊøÇëÊäÈën");
                     flag = sc.next();
                     break;
                 case 1002:
-                    System.out.println("è¯·è¾“å…¥è´­ä¹°æ•°é‡");
+                    System.out.println("ÇëÊäÈë¹ºÂòÊıÁ¿");
                     count = sc.nextInt();
                     money =count;
-                    System.out.println("æ‚¨è´­ä¹°æ–°èƒ½æºé‡‘è"+count+"ä»½ã€‚ä¸€å…±èŠ±è´¹"+50000*count+"å…ƒ");
-                    System.out.println("ç»§ç»­è¾“å…¥è¯·è¾“å…¥Yï¼Œç»“æŸè¯·è¾“å…¥N");
+                    System.out.println("Äú¹ºÂòĞÂÄÜÔ´½ğÈÚ"+count+"·İ¡£Ò»¹²»¨·Ñ"+50000*count+"Ôª");
+                    System.out.println("¼ÌĞøÊäÈëÇëÊäÈëy£¬½áÊøÇëÊäÈën");
                     flag = sc.next();
                     break;
                 default:
-                    System.out.println("ä½ è¾“å…¥çš„åºå·æœ‰è¯¯");
+                    System.out.println("ÄãÊäÈëµÄĞòºÅÓĞÎó");
                     break;
             }
-        }
-        System.out.println("è¿™ä¸ªé¡¹ç›®æˆ‘ç‹å¤šé±¼æŠ•äº†!");
+        }while ("y".equals(flag));
+        System.out.println("Õâ¸öÏîÄ¿ÎÒÍõ¶àÓãÍ¶ÁË!");
     }
 
 }

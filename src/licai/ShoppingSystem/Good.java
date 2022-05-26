@@ -1,16 +1,16 @@
 package licai.ShoppingSystem;
 
-//å•†å“ç±»ï¼šå•†å“ç¼–å·ã€å•†å“å•ä»·ã€å•†å“åç§°
+//ÉÌÆ·Àà£ºÉÌÆ·±àºÅ¡¢ÉÌÆ·µ¥¼Û¡¢ÉÌÆ·Ãû³Æ
 public class Good {
     private int id;
     private double pirce;
     private String name;
 
-    //æ— å‚æ„é€ æ–¹æ³•
+    //ÎŞ²Î¹¹Ôì·½·¨
     public Good() {
     }
 
-    //æœ‰å‚æ„é€ æ–¹æ³•
+    //ÓĞ²Î¹¹Ôì·½·¨
     public Good(int id, double pirce, String name) {
         this.id = id;
         this.pirce = pirce;
@@ -18,7 +18,7 @@ public class Good {
     }
 
 
-    //å°†toStringæ–¹æ³•é‡å†™
+    //½«toString·½·¨ÖØĞ´
     @Override
     public String toString() {
         return   id +"\t" +pirce + "\t"+name ;

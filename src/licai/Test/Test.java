@@ -11,49 +11,49 @@ import java.util.Scanner;
 public class Test {
     public static void main(String[] args) {
         while(true){
-            //é¦–å…ˆç»™å‡ºæç¤º
-            System.out.println("æ¬¢è¿è¿›å…¥æ³¨å†Œç™»å½•ç•Œé¢ï¼š");
-            System.out.println("1.æ³¨å†Œ");
-            System.out.println("2.ç™»å½•");
-            System.out.println("3.é€€å‡º");
+            //Ê×ÏÈ¸ø³öÌáÊ¾
+            System.out.println("»¶Ó­½øÈë×¢²áµÇÂ¼½çÃæ£º");
+            System.out.println("1.×¢²á");
+            System.out.println("2.µÇÂ¼");
+            System.out.println("3.ÍË³ö");
 
-            //åˆ›å»ºä¸€ä¸ªç”¨æˆ·æ“ä½œç±»
+            //´´½¨Ò»¸öÓÃ»§²Ù×÷Àà
             UserDaoImpl udi = new UserDaoImpl();
 
-            //åˆ›å»ºé”®ç›˜å½•å…¥å¯¹è±¡ï¼Œå¹¶è·å–é”®ç›˜å½•å…¥æ•°æ®
+            //´´½¨¼üÅÌÂ¼Èë¶ÔÏó£¬²¢»ñÈ¡¼üÅÌÂ¼ÈëÊı¾İ
             Scanner sc = new Scanner(System.in);
             String choice = sc.nextLine();
 
-            //åˆ©ç”¨switchå¾ªç¯æ¥åˆ¤æ–­
+            //ÀûÓÃswitchÑ­»·À´ÅĞ¶Ï
             switch (choice) {
                 case "1":
-                    System.out.println("æ¬¢è¿æ¥åˆ°æ³¨å†Œç•Œé¢ï¼");
-                    System.out.println("è¯·è¾“å…¥ç”¨æˆ·åï¼š");
+                    System.out.println("»¶Ó­À´µ½×¢²á½çÃæ£¡");
+                    System.out.println("ÇëÊäÈëÓÃ»§Ãû£º");
                     String userName = sc.nextLine();
-                    System.out.println("è¯·è¾“å…¥å¯†ç ï¼š");
+                    System.out.println("ÇëÊäÈëÃÜÂë£º");
                     String passWord = sc.nextLine();
-                    //æŠŠç”¨æˆ·åå’Œå¯†ç å°è£…æˆä¸€ä¸ªç”¨æˆ·ç±»å¯¹è±¡
+                    //°ÑÓÃ»§ÃûºÍÃÜÂë·â×°³ÉÒ»¸öÓÃ»§Àà¶ÔÏó
                     User user = new User(userName,passWord);
-                    //é€šè¿‡ç”¨æˆ·æ“ä½œç±»å¯¹è±¡è°ƒç”¨æ³¨å†Œæ–¹æ³•
+                    //Í¨¹ıÓÃ»§²Ù×÷Àà¶ÔÏóµ÷ÓÃ×¢²á·½·¨
                     udi.regist(user);
-                    System.out.println("æ³¨å†ŒæˆåŠŸï¼");
+                    System.out.println("×¢²á³É¹¦£¡");
                     break;
 
                 case "2":
-                    System.out.println("æ¬¢è¿æ¥åˆ°ç™»å½•ç•Œé¢ï¼");
-                    System.out.println("è¯·è¾“å…¥ç”¨æˆ·åï¼š");
+                    System.out.println("»¶Ó­À´µ½µÇÂ¼½çÃæ£¡");
+                    System.out.println("ÇëÊäÈëÓÃ»§Ãû£º");
                     String inputUserName = sc.nextLine();
-                    System.out.println("è¯·è¾“å…¥å¯†ç ï¼š");
+                    System.out.println("ÇëÊäÈëÃÜÂë£º");
                     String inputPassWord = sc.nextLine();
-                    //é€šè¿‡ç”¨æˆ·æ“ä½œç±»å¯¹è±¡è°ƒç”¨ç™»å½•æ–¹æ³•
+                    //Í¨¹ıÓÃ»§²Ù×÷Àà¶ÔÏóµ÷ÓÃµÇÂ¼·½·¨
                     boolean flag = udi.isLogin(inputUserName,inputPassWord);
                     if ((Objects.equals(inputPassWord, "123") && Objects.equals(inputUserName, "admin"))){
-                        System.out.println("ç™»å½•æˆåŠŸï¼");
+                        System.out.println("µÇÂ¼³É¹¦£¡");
                         FinancingSystem.Change();
                     }
                     else if(flag){
                         if (Objects.equals(inputPassWord, "123") && Objects.equals(inputUserName, "admin")) {
-                            System.out.println("ç™»å½•æˆåŠŸï¼");
+                            System.out.println("µÇÂ¼³É¹¦£¡");
                             FinancingSystem.Change();
                             break;
                         }else{
@@ -61,14 +61,14 @@ public class Test {
                             break;
                         }
                     }else{
-                        System.out.println("ç™»å½•å¤±è´¥ï¼");
+                        System.out.println("µÇÂ¼Ê§°Ü£¡");
                     }
                     break;
 
                 case "3":{
                 }
                 default:
-                    //å¯¹äº3æˆ–è€…å…¶ä»–æ•°å­—çš„é€‰æ‹©ï¼Œéƒ½ç›´æ¥é€€å‡ºç³»ç»Ÿ
+                    //¶ÔÓÚ3»òÕßÆäËûÊı×ÖµÄÑ¡Ôñ£¬¶¼Ö±½ÓÍË³öÏµÍ³
                     System.exit(0);
                     break;
             }

@@ -3,11 +3,11 @@ package licai.dao;
 import licai.domain.User;
 
 public interface UserDao {
-    //杩欎釜鎺ュ彛淇濊瘉涓や釜鍔熻兘
+    //这个接口保证两个功能
 
-    //娉ㄥ唽
+    //注册
     public abstract void regist(User user);
-    //鐧诲綍
+    //登录
     public abstract boolean isLogin(String userName,String passWord);
 
 }

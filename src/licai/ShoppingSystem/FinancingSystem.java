@@ -4,90 +4,90 @@ import java.util.Scanner;
 
 public class FinancingSystem {
      public static void Change(){
-        //1.å®šä¹‰å¯¹è±¡æ•°ç»„å¹¶èµ‹å€¼
+        //1.¶¨Òå¶ÔÏóÊı×é²¢¸³Öµ
         Good[] goods = new Good[3];
-        goods[0] =new Good(1000,10000,"ç¬”è®°æœ¬") ;
-        goods[1] =new Good(1001,20000,"è¥¿çº¢æŸ¿") ;
-        goods[2] =new Good(1002,50000,"æ–°èƒ½æº") ;
+        goods[0] =new Good(1000,10000,"±Ê¼Ç±¾") ;
+        goods[1] =new Good(1001,20000,"Î÷ºìÊÁ") ;
+        goods[2] =new Good(1002,50000,"ĞÂÄÜÔ´") ;
 
-        //2.åˆ›å»ºScannerå¯¹è±¡å¹¶è°ƒç”¨è·å–æ§åˆ¶å°è¾“å…¥ä¿¡æ¯çš„æ–¹æ³•
+        //2.´´½¨Scanner¶ÔÏó²¢µ÷ÓÃ»ñÈ¡¿ØÖÆÌ¨ÊäÈëĞÅÏ¢µÄ·½·¨
         Scanner sc = new Scanner(System.in);
 
-        //3.å®šä¹‰å¾ªç¯æ¡ä»¶
+        //3.¶¨ÒåÑ­»·Ìõ¼ş
         boolean isWork=true;
-        //4.å®šä¹‰æ“ä½œå•†å“ç¼–å·
+        //4.¶¨Òå²Ù×÷ÉÌÆ·±àºÅ
         int indexNum;
-        //5.å®šä¹‰æ“ä½œçš„å•†å“ç¼–å·çš„ä¸‹æ ‡
+        //5.¶¨Òå²Ù×÷µÄÉÌÆ·±àºÅµÄÏÂ±ê
         int index=0;
 
         while (isWork){
-            System.out.println("===================è¶…å¸‚ç®¡ç†ç³»ç»Ÿ==================");
-            System.out.println("1:è´§ç‰©æ¸…å•\t2:å¢åŠ è´§ç‰©\t3:åˆ é™¤è´§ç‰©\t4:ä¿®æ”¹è´§ç‰©\t5:é€€å‡º");
-            System.out.println("è¾“å‡ºä½ è¦æ“ä½œçš„ç¼–å·ï¼š");
+            System.out.println("===================³¬ÊĞ¹ÜÀíÏµÍ³==================");
+            System.out.println("1:»õÎïÇåµ¥\t2:Ôö¼Ó»õÎï\t3:É¾³ı»õÎï\t4:ĞŞ¸Ä»õÎï\t5:ÍË³ö");
+            System.out.println("Êä³öÄãÒª²Ù×÷µÄ±àºÅ£º");
             int choseNum = sc.nextInt();
             System.out.println();
 
-            //1:è´§ç‰©æ¸…å•
+            //1:»õÎïÇåµ¥
             if(choseNum==1){
-                System.out.println("===================å•†å“æ¸…å•==================");
-                System.out.println("å•†å“ç¼–å·\tå•†å“å•ä»·\tå•†å“åç§°");
+                System.out.println("===================ÉÌÆ·Çåµ¥==================");
+                System.out.println("ÉÌÆ·±àºÅ\tÉÌÆ·µ¥¼Û\tÉÌÆ·Ãû³Æ");
                 for (int i = 0; i <goods.length ; i++) {
                     if(goods[i]!=null){
                         System.out.println(goods[i].toString());
                     }
                 }
-                //2:å¢åŠ è´§ç‰©
+                //2:Ôö¼Ó»õÎï
             }else if(choseNum==2){
-                System.out.println("æ‚¨é€‰æ‹©çš„æ˜¯æ·»åŠ å•†å“åŠŸèƒ½");
-                //2.1å¢åŠ å¯¹è±¡æ•°ç»„é•¿åº¦
+                System.out.println("ÄúÑ¡ÔñµÄÊÇÌí¼ÓÉÌÆ·¹¦ÄÜ");
+                //2.1Ôö¼Ó¶ÔÏóÊı×é³¤¶È
                 goods=Arrays.copyOf(goods,goods.length+1);
-                //2.2åˆ›å»ºæ–°å¯¹è±¡å¹¶æŠŠå¯¹è±¡æ”¾å…¥æ–°æ•°ç»„ä¸­
+                //2.2´´½¨ĞÂ¶ÔÏó²¢°Ñ¶ÔÏó·ÅÈëĞÂÊı×éÖĞ
                 goods[3]= new Good();
                 //goods[3]=goods4;
-                //2.3åŠ¨æ€èµ‹å€¼
-                System.out.print("è¾“å…¥å•†å“ç¼–å·IDï¼š");
+                //2.3¶¯Ì¬¸³Öµ
+                System.out.print("ÊäÈëÉÌÆ·±àºÅID£º");
                 goods[goods.length-1].setId(sc.nextInt());
-                System.out.print("è¾“å…¥å•†å“å•ä»·ï¼š");
+                System.out.print("ÊäÈëÉÌÆ·µ¥¼Û£º");
                 goods[goods.length-1].setPirce(sc.nextDouble());
-                System.out.print("è¾“å…¥å•†å“åç§°ï¼š");
+                System.out.print("ÊäÈëÉÌÆ·Ãû³Æ£º");
                 goods[goods.length-1].setName(sc.next());
-                System.out.println("æ·»åŠ æˆåŠŸ");
+                System.out.println("Ìí¼Ó³É¹¦");
 
-                //3:åˆ é™¤è´§ç‰©
+                //3:É¾³ı»õÎï
             }else if(choseNum==3){
-                System.out.println("æ‚¨é€‰æ‹©çš„æ˜¯åˆ é™¤åŠŸèƒ½");
-                System.out.println("è¾“å…¥è¦åˆ é™¤çš„å•†å“ç¼–å·ID");
+                System.out.println("ÄúÑ¡ÔñµÄÊÇÉ¾³ı¹¦ÄÜ");
+                System.out.println("ÊäÈëÒªÉ¾³ıµÄÉÌÆ·±àºÅID");
                 indexNum=sc.nextInt();
-                //æ‰¾åˆ°å¯¹åº”å•†å“ç¼–å·çš„å¯¹è±¡å¹¶èµ‹å€¼ä¸ºnull ã€‚
+                //ÕÒµ½¶ÔÓ¦ÉÌÆ·±àºÅµÄ¶ÔÏó²¢¸³ÖµÎªnull ¡£
                 for (int i = 0; i <goods.length ; i++) {
                     if(indexNum == goods[i].getId()){
                         goods[i]=null;
                     }
                 }
-                System.out.println("åˆ é™¤æˆåŠŸ");
-                //4:ä¿®æ”¹è´§ç‰©
+                System.out.println("É¾³ı³É¹¦");
+                //4:ĞŞ¸Ä»õÎï
             }else if(choseNum==4){
-                System.out.println("é€‰çš„æ˜¯ä¿®æ”¹åŠŸèƒ½");
-                System.out.println("è¾“å…¥ä½ è¦ä¿®æ”¹çš„å•†å“ç¼–å·ID");
+                System.out.println("Ñ¡µÄÊÇĞŞ¸Ä¹¦ÄÜ");
+                System.out.println("ÊäÈëÄãÒªĞŞ¸ÄµÄÉÌÆ·±àºÅID");
                 indexNum=sc.nextInt();
-                //æ‰¾åˆ°å¯¹åº”å•†å“ç¼–å·çš„ä¸€ç»´æ•°ç»„ã€‚
+                //ÕÒµ½¶ÔÓ¦ÉÌÆ·±àºÅµÄÒ»Î¬Êı×é¡£
                 for (int i = 0; i <goods.length ; i++) {
                     if(indexNum==goods[i].getId()){
                         index=i;
                     }
                 }
-                System.out.println("è¾“å…¥æ–°çš„å•†å“ç¼–å·");
+                System.out.println("ÊäÈëĞÂµÄÉÌÆ·±àºÅ");
                 goods[index].setId(sc.nextInt());
-                System.out.println("è¾“å…¥å•†å“å•ä»·");
+                System.out.println("ÊäÈëÉÌÆ·µ¥¼Û");
                 goods[index].setPirce(sc.nextDouble());
-                System.out.println("è¾“å…¥å•†å“åç§°");
+                System.out.println("ÊäÈëÉÌÆ·Ãû³Æ");
                 goods[index].setName(sc.next());
-                System.out.println("ä¿®æ”¹æˆåŠŸ");
-                //5:é€€å‡º
+                System.out.println("ĞŞ¸Ä³É¹¦");
+                //5:ÍË³ö
             }else if(choseNum==5){
                 isWork=false;
             }else{
-                System.out.println("è¾“å…¥é”™è¯¯ï¼Œè¯·é€‰æ‹©1-5çš„æ•°å­—ï¼");
+                System.out.println("ÊäÈë´íÎó£¬ÇëÑ¡Ôñ1-5µÄÊı×Ö£¡");
             }
         }
 

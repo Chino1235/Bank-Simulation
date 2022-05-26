@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public class UserDaoImpl implements UserDao{
 
-    //鍒涘缓涓�涓泦鍚堬紝瀹氫箟涓哄叕鏈夌殑
+    //创建一个集合，定义为公有的
     static ArrayList<User> users=new ArrayList<User>();
-    //娉ㄥ唽鏂规硶锛氭妸鐢ㄦ埛淇℃伅瀛樻斁鍒伴泦鍚堜腑
+    //注册方法：把用户信息存放到集合中
     @Override
     public void regist(User user) {
         // TODO Auto-generated method stub
@@ -16,7 +16,7 @@ public class UserDaoImpl implements UserDao{
 
     }
 
-    //鐧诲綍鍔熻兘锛氭牎楠岀敤鎴峰悕鍜屽瘑鐮佹槸鍚︽纭紝姝ｇ‘杩斿洖true锛屽惁鍒欒繑鍥瀎alse
+    //登录功能：校验用户名和密码是否正确，正确返回true，否则返回false
     @Override
     public boolean isLogin(String userName, String passWord) {
         // TODO Auto-generated method stub
