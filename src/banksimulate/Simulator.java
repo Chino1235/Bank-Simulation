@@ -6,34 +6,37 @@ import java.util.*;
 public class Simulator {
 
     /**
-     * æ•´å­˜æ•´å–å¹´åˆ©ç‡
+     * Õû´æÕûÈ¡ÄêÀûÂÊ
      */
     public static final double YearlyInterestofWDWW = 0.0325;
     /**
-     * é›¶å­˜æ•´å–å¹´åˆ©ç‡
+     * Áã´æÕûÈ¡ÄêÀûÂÊ
      */
     public static final double YearlyInterestofLDWW = 0.0155;
 
-    static Client client = new Client("John","62170009666666666666666","000000",0);
+    static Client client = new Client("ĞìÕãä¿","ĞìÕãä¿Å£±Æ666","666666",0);
 
     public static void menu(){
-        System.out.println("â”â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”“");
-        System.out.println("â”‚       æ¬¢  è¿  æ‚¨  æ¥  åˆ°       â”‚");
-        System.out.println("â”‚        æ¬¡   å…ƒ   é“¶   è¡Œ       â”‚");
-        System.out.println("â”‚       è¯·  é€‰  æ‹©  æ“   ä½œ      â”‚");
-        System.out.println("â”‚       1.æ´»  æœŸ  å­˜  æ¬¾         â”‚");
-        System.out.println("â”‚       2.æ•´  å­˜  æ•´  å–         â”‚");
-        System.out.println("â”‚       3.é›¶  å­˜  æ•´  å–         â”‚");
-        System.out.println("â”‚       4.æ•´  å­˜  é›¶  å–         â”‚");
-        System.out.println("â”‚       5.æŸ¥  çœ‹  è¯¦  æƒ…         â”‚");
-        System.out.println("â”‚       6.å–         æ¬¾         â”‚");
-        System.out.println("â”‚       0.é€€         å¡         â”‚");
-        System.out.println("â”—â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”›");
+        System.out.println("©³©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©·");
+        System.out.println("©¦       »¶  Ó­  Äú  À´  µ½       ©¦");
+        System.out.println("©¦        ´Î   Ôª   Òø   ĞĞ       ©¦");
+        System.out.println("©¦       Çë  Ñ¡  Ôñ  ²Ù   ×÷      ©¦");
+        System.out.println("©¦       1.»î  ÆÚ  ´æ  ¿î         ©¦");
+        System.out.println("©¦       2.Õû  ´æ  Õû  È¡         ©¦");
+        System.out.println("©¦       3.Áã  ´æ  Õû  È¡         ©¦");
+        System.out.println("©¦       4.Õû  ´æ  Áã  È¡         ©¦");
+        System.out.println("©¦       5.²é  ¿´  Ïê  Çé         ©¦");
+        System.out.println("©¦       6.È¡         ¿î         ©¦");
+        System.out.println("©¦       7.Éú  »î  ½É  ·Ñ         ©¦");
+        System.out.println("©¦       8.ĞŞ  ¸Ä  ÃÜ  Âë         ©¦");
+        System.out.println("©¦       9.Ç×  ÓÑ  ×ª  ÕË         ©¦");
+        System.out.println("©¦       0.ÍË         ¿¨         ©¦");
+        System.out.println("©»©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¿");
     }
 
     public static void basicInfoOutput(){
-        System.out.println("å­˜æ¬¾äººå§“åï¼š" + client.getClientName());
-        System.out.println("å­˜æ¬¾äººè´¦å·ï¼š" + client.getAccountNumber());
+        System.out.println("´æ¿îÈËĞÕÃû£º" + client.getClientName());
+        System.out.println("´æ¿îÈËÕËºÅ£º" + client.getAccountNumber());
     }
 
     public static void main(String[] args) {
@@ -44,18 +47,22 @@ public class Simulator {
         String today = sd.format(date);
         int currentProfile = 0;
         int onTimeProfile = 0;
+        int currentWaterrate = 0;
+        int currentElerate = 0;
+        int currentGasrate = 0;
+        int currentHeatrate = 0;
         for(;;){
             Calendar calendar = Calendar.getInstance();
             menu();
             int opt = sc.nextInt();
             switch (opt){
                 case 1:{
-                    System.out.print("è¯·è¾“å…¥å­˜æ¬¾é‡‘é¢ï¼š");
+                    System.out.print("ÇëÊäÈë´æ¿î½ğ¶î£º");
                     int profile = sc.nextInt();
                     client.currentDeposit(profile);
                     basicInfoOutput();
-                    System.out.println("å­˜æ¬¾é‡‘é¢ï¼š"+ profile + "å…ƒ");
-                    System.out.println("å½“å‰è´¦æˆ·ä½™é¢ä¸ºï¼š"+ client.getProfile() + "å…ƒ");
+                    System.out.println("´æ¿î½ğ¶î£º"+ profile + "Ôª");
+                    System.out.println("µ±Ç°ÕË»§Óà¶îÎª£º"+ client.getProfile() + "Ôª");
                     DepositType depositType = new DepositType(profile,opt,0,today,"*",today,0);
                     depositList.add(depositType);
                     ClientReceipt.generateReceipt(client,profile);
@@ -63,13 +70,13 @@ public class Simulator {
                     break;
                 }
                 case 2:{
-                    System.out.print("è¯·è¾“å…¥å­˜æ¬¾é‡‘é¢ï¼š");
+                    System.out.print("ÇëÊäÈë´æ¿î½ğ¶î£º");
                     int profile = sc.nextInt();
-                    System.out.print("è¯·è¾“å…¥å­˜æ¬¾å¹´é™ï¼š");
+                    System.out.print("ÇëÊäÈë´æ¿îÄêÏŞ£º");
                     int year = sc.nextInt();
                     client.wholeDepositandWithdraw(profile,year);
                     basicInfoOutput();
-                    System.out.println("å­˜æ¬¾é‡‘é¢ï¼š"+ profile + "å…ƒ");
+                    System.out.println("´æ¿î½ğ¶î£º"+ profile + "Ôª");
                     listAdder(depositList, sd, today, opt, profile, year);
                     ClientReceipt.generateReceipt(client,profile);
                     onTimeProfile += profile;
@@ -77,31 +84,31 @@ public class Simulator {
                 }
 
                 case 3:{
-                    System.out.print("è¯·è¾“å…¥æ¯æœˆå­˜å…¥é‡‘é¢ï¼š");
+                    System.out.print("ÇëÊäÈëÃ¿ÔÂ´æÈë½ğ¶î£º");
                     int profile = sc.nextInt();
-                    System.out.print("è¯·è¾“å…¥å­˜æ¬¾å¹´é™ï¼š");
+                    System.out.print("ÇëÊäÈë´æ¿îÄêÏŞ£º");
                     int year = sc.nextInt();
                     client.lumpsumDepositandwholeWithdraw(profile,year*12);
                     basicInfoOutput();
-                    System.out.println("å­˜æ¬¾é‡‘é¢ï¼š"+ client.depositProfile + "å…ƒ");
-                    System.out.println("åˆ°æœŸåˆ©æ¯ï¼š"+ client.interest + "å…ƒ");
+                    System.out.println("´æ¿î½ğ¶î£º"+ client.depositProfile + "Ôª");
+                    System.out.println("µ½ÆÚÀûÏ¢£º"+ client.interest + "Ôª");
                     listAdder(depositList, sd, today, opt, profile*12*year, year);
                     ClientReceipt.generateReceipt(client,profile*12*year);
                     onTimeProfile += (profile*12*year);
                     break;
                 }
                 case 4:{
-                    System.out.print("è¯·è¾“å…¥å­˜æ¬¾é‡‘é¢ï¼š");
+                    System.out.print("ÇëÊäÈë´æ¿î½ğ¶î£º");
                     int profile = sc.nextInt();
-                    System.out.print("è¯·è¾“å…¥æ”¯å–æ¬¡æ•°ï¼š");
+                    System.out.print("ÇëÊäÈëÖ§È¡´ÎÊı£º");
                     int time = sc.nextInt();
-                    System.out.print("è¯·è¾“å…¥å­˜æ¬¾å¹´é™ï¼š");
+                    System.out.print("ÇëÊäÈë´æ¿îÄêÏŞ£º");
                     int year = sc.nextInt();
                     client.wholeDepositandLumpsumWithdraw(profile,time,year);
                     basicInfoOutput();
-                    System.out.println("å­˜æ¬¾é‡‘é¢ï¼š"+ profile + "å…ƒ");
+                    System.out.println("´æ¿î½ğ¶î£º"+ profile + "Ôª");
                     double formatt = (double)Math.round(client.interest *100)/100;
-                    System.out.println("åˆ°æœŸåˆ©æ¯ï¼š"+ formatt + "å…ƒ");
+                    System.out.println("µ½ÆÚÀûÏ¢£º"+ formatt + "Ôª");
                     listAdder(depositList, sd, today,opt, profile, year);
                     ClientReceipt.generateReceipt(client,profile);
                     onTimeProfile += profile;
@@ -109,10 +116,10 @@ public class Simulator {
                 }
                 case 5:{
                     basicInfoOutput();
-                    System.out.println("å½“å‰è´¦æˆ·ä½™é¢ï¼š"+client.getProfile());
-                    System.out.println("å…¶ä¸­ï¼Œæ´»æœŸä½™é¢"+currentProfile+"å…ƒï¼Œå®šæœŸä½™é¢"+onTimeProfile+"å…ƒ\n");
-                    System.out.println("1-æ´»æœŸå­˜æ¬¾\n2-æ•´å­˜é›¶å–\n3-é›¶å­˜æ•´å–\n4-æ•´å­˜é›¶å–\n5-å–æ¬¾\n");
-                    System.out.println("å­˜æ¬¾é‡‘é¢\tå­˜æ¬¾ç±»å‹\tå­˜æ¬¾å¹´é™\t\tå­˜æ¬¾æ—¶é—´\t\t\tåˆ°æœŸæ—¶é—´\t\t\t\tèµ·æ¯æ—¶é—´\t\t\t\tåˆ°æœŸåˆ©æ¯");
+                    System.out.println("µ±Ç°ÕË»§Óà¶î£º"+client.getProfile());
+                    System.out.println("ÆäÖĞ£¬»îÆÚÓà¶î"+currentProfile+"Ôª£¬¶¨ÆÚÓà¶î"+onTimeProfile+"Ôª\n");
+                    System.out.println("1-»îÆÚ´æ¿î\n2-Õû´æÁãÈ¡\n3-Áã´æÕûÈ¡\n4-Õû´æÁãÈ¡\n5-È¡¿î\n");
+                    System.out.println("´æ¿î½ğ¶î\t´æ¿îÀàĞÍ\t´æ¿îÄêÏŞ\t\t´æ¿îÊ±¼ä\t\t\tµ½ÆÚÊ±¼ä\t\t\t\tÆğÏ¢Ê±¼ä\t\t\t\tµ½ÆÚÀûÏ¢");
                     Iterator<DepositType> iterator = depositList.iterator();
                     while(iterator.hasNext()){
                         DepositType depositType = (DepositType) iterator.next();
@@ -121,25 +128,125 @@ public class Simulator {
                     break;
                 }
                 case 6:{
-                    System.out.println("è¯·è¾“å…¥å–æ¬¾é‡‘é¢");
+                    System.out.println("ÇëÊäÈëÈ¡¿î½ğ¶î");
                     int profile = sc.nextInt();
                     if(profile>currentProfile){
-                        System.out.println("å–æ¬¾é‡‘é¢å¤§äºå½“å‰æ´»æœŸé‡‘é¢ï¼Œæ— æ³•å–æ¬¾ï¼");
+                        System.out.println("È¡¿î½ğ¶î´óÓÚµ±Ç°»îÆÚ½ğ¶î£¬ÎŞ·¨È¡¿î£¡");
                         break;
                     }
-                    System.out.println("å–æ¬¾æˆåŠŸï¼");
+                    System.out.println("È¡¿î³É¹¦£¡");
                     client.deposit(profile);
                     client.setProfile(client.getProfile()-profile);
                     currentProfile-=profile;
                     break;
                 }
+                case 7: {
+                    System.out.println("ÇëÑ¡Ôñ½É·ÑÏîÄ¿:");
+                    System.out.println("1.Ë®·Ñ");
+                    System.out.println("2.µç·Ñ");
+                    System.out.println("3.ÃºÆø·Ñ");
+                    System.out.println("4.Å¯Æø·Ñ");
+                    int PaymentForm = sc.nextInt();
+                    if (PaymentForm == 1) {
+                        System.out.println("ÇëÊäÈë½É·Ñ½ğ¶î:");
+                        int waterrate = sc.nextInt();
+                        if (waterrate > currentProfile) {
+                            System.out.println("Óà¶î²»×ã£¬ÎŞ·¨½É·Ñ£¡");
+                            break;
+                        }
+                        client.setProfile(client.getProfile() - waterrate);
+                        client.setWaterrate(client.getWaterrate() + waterrate);
+                        currentProfile -= waterrate;
+                        currentWaterrate += waterrate;
+                        System.out.println("½É·Ñ³É¹¦,ÒøĞĞ¿¨Óà¶îÎª£º" + currentProfile + "Ôª,Ë®·ÑÓà¶îÎª"+currentWaterrate);
+                        break;
+                    }
+                    if (PaymentForm == 2) {
+                        System.out.println("ÇëÊäÈë½É·Ñ½ğ¶î:");
+                        int elerate = sc.nextInt();
+                        if (elerate > currentProfile) {
+                            System.out.println("Óà¶î²»×ã£¬ÎŞ·¨½É·Ñ£¡");
+                            break;
+                        }
+                        client.setProfile(client.getProfile() - elerate);
+                        currentProfile -= elerate;
+                        currentElerate += elerate;
+                        System.out.println("½É·Ñ³É¹¦,ÒøĞĞ¿¨Óà¶îÎª£º" + currentProfile + "Ôª,µç·ÑÓà¶îÎª"+currentElerate);
+                        break;
+                    }
+                    if (PaymentForm == 3) {
+                        System.out.println("ÇëÊäÈë½É·Ñ½ğ¶î:");
+                        int gasrate = sc.nextInt();
+                        if (gasrate > currentProfile) {
+                            System.out.println("Óà¶î²»×ã£¬ÎŞ·¨½É·Ñ£¡");
+                            break;
+                        }
+                        client.setProfile(client.getProfile() - gasrate);
+                        currentProfile -= gasrate;
+                        currentElerate += gasrate;
+                        System.out.println("½É·Ñ³É¹¦,ÒøĞĞ¿¨Óà¶îÎª£º" + currentProfile + "Ôª,ÃºÆø·ÑÓà¶îÎª"+currentGasrate);
+                        break;
+                    }
+                    if (PaymentForm == 4) {
+                        System.out.println("ÇëÊäÈë½É·Ñ½ğ¶î:");
+                        int heatrate = sc.nextInt();
+                        if (heatrate > currentProfile) {
+                            System.out.println("Óà¶î²»×ã£¬ÎŞ·¨½É·Ñ£¡");
+                            break;
+                        }
+                        client.setProfile(client.getProfile() - heatrate);
+                        currentProfile -= heatrate;
+                        currentElerate += heatrate;
+                        System.out.println("½É·Ñ³É¹¦,ÒøĞĞ¿¨Óà¶îÎª£º" + currentProfile + "Ôª,Å¯Æø·ÑÓà¶îÎª"+currentHeatrate);
+                        break;
+                    }
+                }
+                case 8:{
+                    String password = "666666";
+                    System.out.println("ÇëÊäÈë¾ÉÃÜÂë");
+                    String oldpassword = sc.nextLine();
+                    if (oldpassword == password){
+                        System.out.println("ÇëÊäÈëĞÂÃÜÂë£º");
+                        String newpassword = sc.nextLine();
+                        System.out.println("ÇëÔÙ´ÎÊäÈëÃÜÂë:");
+                        String renewpassword = sc.nextLine();
+                        if (newpassword == renewpassword){
+                            System.out.println("ÃÜÂëĞŞ¸Ä³É¹¦!");
+                            password = newpassword;
+                            break;
+                        }
+                        else {
+                            System.out.println("Á½´ÎÃÜÂëÊäÈë²»Ò»ÖÂ£¬ÇëÖØĞÂÊäÈë£¡");
+                            break;
+                        }
+                    }
+                    else{
+                        System.out.println("ÃÜÂë´íÎó£¬ÇëÖØĞÂÊäÈë!");
+                        break;
+                    }
+                }
+                case 9:{
+                    System.out.println("ÇëÊäÈë¶Ô·½ÕËºÅ:");
+                    int time = sc.nextInt();
+                    System.out.println("ÇëÊäÈë×ªÕË½ğ¶î:");
+                    int profile = sc.nextInt();
+                    if (profile > currentProfile) {
+                        System.out.println("Óà¶î²»×ã£¬ÎŞ·¨½É·Ñ£¡");
+                        break;
+                    }
+                    client.setProfile(client.getProfile() - profile);
+                    currentProfile -= profile;
+                    System.out.println("½É·Ñ³É¹¦,ÒøĞĞ¿¨Óà¶îÎª£º" + currentProfile + "Ôª!");
+                    break;
+
+                }
                 case 0:{
-                    System.out.println("æ„Ÿè°¢æ‚¨çš„å…‰ä¸´");
+                    System.out.println("¸ĞĞ»ÄúµÄ¹âÁÙ");
                     System.exit(0);
                     break;
                 }
                 default:{
-                    System.out.println("è¯·é‡æ–°é€‰æ‹©");
+                    System.out.println("ÇëÖØĞÂÑ¡Ôñ");
                     break;
                 }
             }

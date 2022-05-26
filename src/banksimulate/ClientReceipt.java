@@ -20,15 +20,15 @@ public class ClientReceipt {
 
     @Override
     public String toString() {
-        return "æˆ·åï¼š'" + clientName + '\n' +
-                "è´¦å·ï¼š'" + account + '\n' +
-                "é‡‘é¢ï¼š'" + depositProfile + '\n' +
-                "æ—¥æœŸï¼š" + date ;
+        return "»§Ãû£º'" + clientName + '\n' +
+                "ÕËºÅ£º'" + account + '\n' +
+                "½ğ¶î£º'" + depositProfile + '\n' +
+                "ÈÕÆÚ£º" + date ;
     }
 
    public static void generateReceipt(Client client,double profile)
     {
-        System.out.println("æ˜¯å¦éœ€è¦å›æ‰§ï¼Ÿy/n");
+        System.out.println("ÊÇ·ñĞèÒª»ØÖ´£¿y/n");
         Scanner sc = new Scanner(System.in);
         if("n".equals(sc.nextLine())){
             return;

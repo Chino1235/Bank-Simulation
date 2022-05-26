@@ -11,29 +11,31 @@ import static banksimulate.Simulator.YearlyInterestofWDWW;
  */
 public class Client {
     /**
-     * å®¢æˆ·å
+     * ¿Í»§Ãû
      */
     private String clientName;
     /**
-     * è´¦å·
+     * ÕËºÅ
      */
     private String accountNumber;
     /**
-     * å¯†ç 
+     * ÃÜÂë
      */
     private String password;
-    /**ä½™é¢
+    /**Óà¶î
      *
      */
     private double profile;
-    /**å­˜æ¬¾é‡‘é¢
+    /**´æ¿î½ğ¶î
      *
      */
     public double depositProfile;
-    /**åˆ©æ¯
+    /**ÀûÏ¢
      *
      */
     public double interest;
+
+    private int waterrate;
 
     public Client(String clientName, String accountNumber, String password, double profile) {
         this.clientName = clientName;
@@ -51,15 +53,19 @@ public class Client {
         return accountNumber;
     }
 
+    public String getPassword() {return password; }
+
     public double getProfile() {
         return profile;
     }
 
+    public int getWaterrate() { return waterrate; }
+    public void setWaterrate(int waterrate) { this.waterrate = waterrate; }
     public void setProfile(double profile) {
         this.profile = profile;
     }
 
-    public void wholeDepositandWithdraw(double profile,int time){ //æ—¶é—´ä»¥å¹´ä¸ºå•ä½
+    public void wholeDepositandWithdraw(double profile,int time){ //Ê±¼äÒÔÄêÎªµ¥Î»
         double profile1 = profile;
         while(time!=0){
             profile = profile * (1+YearlyInterestofWDWW);
@@ -77,6 +83,7 @@ public class Client {
         this.depositProfile = profile;
         this.interest = totalInterest;
     }
+
 
     public void lumpsumDepositandwholeWithdraw(double profileMonthly,int depositTime){
         double totalDeposit = profileMonthly * depositTime;
