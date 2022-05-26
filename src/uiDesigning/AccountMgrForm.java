@@ -56,6 +56,7 @@ public class AccountMgrForm {
         p4.add(cancel);
 
         mainFrame.setLayout(new GridLayout(4,1));
+        mainFrame.add(p0);
         mainFrame.add(p1);
         mainFrame.add(p2);
         mainFrame.add(p3);
