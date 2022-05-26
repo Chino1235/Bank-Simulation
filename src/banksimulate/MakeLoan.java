@@ -3,42 +3,42 @@ package banksimulate;
 import java.util.Scanner;
 
 public class MakeLoan {
-    public static void main(String[] args) {
-        System.out.println("è¯·è¾“å…¥è´·æ¬¾æœ¬é‡‘ï¼š");
+    public static void Loan(){
+        System.out.println("ÇëÊäÈë´û¿î±¾½ğ£º");
         Scanner input=new Scanner(System.in);
-        double invest = input.nextDouble();     //è´·æ¬¾æœ¬é‡‘
+        double invest = input.nextDouble();     //´û¿î±¾½ğ
 
-        System.out.println("è¯·è¾“å…¥å¹´åˆ©ç‡ï¼š(ä¾‹å¦‚ï¼š5.25%å°±æ˜¯0.0525)");
-        double yearRate = input.nextDouble();     //å¹´åˆ©ç‡
+        System.out.println("ÇëÊäÈëÄêÀûÂÊ£º(ÀıÈç£º5.25%¾ÍÊÇ0.0525)");
+        double yearRate = input.nextDouble();     //ÄêÀûÂÊ
 
-        double monthRate = yearRate/12;   //æœˆåˆ©ç‡
-        System.out.println("è¯·è¾“å…¥å€Ÿæ¬¾æœˆæ•°ï¼š(ä¾‹å¦‚ï¼š30å¹´å°±æ˜¯360)");
+        double monthRate = yearRate/12;   //ÔÂÀûÂÊ
+        System.out.println("ÇëÊäÈë½è¿îÔÂÊı£º(ÀıÈç£º30Äê¾ÍÊÇ360)");
 
-        int month = input.nextInt();  //è¿˜æ¬¾æœˆæ•°
+        int month = input.nextInt();  //»¹¿îÔÂÊı
 
-        System.out.println("æœ¬é‡‘-->"+invest+"   å¹´åˆ©ç‡--->"+yearRate*100+"%"+"  æœŸé™--->"+month+"ä¸ªæœˆ");
+        System.out.println("±¾½ğ-->"+invest+"   ÄêÀûÂÊ--->"+yearRate*100+"%"+"  ÆÚÏŞ--->"+month+"¸öÔÂ");
         System.out.println("--------------------------------------------");
 
-        // æ¯æœˆæœ¬æ¯é‡‘é¢  = (æœ¬é‡‘Ã—æœˆåˆ©ç‡Ã—(1ï¼‹æœˆåˆ©ç‡)ï¼¾è¿˜æ¬¾æœˆæ•°)Ã· ((1ï¼‹æœˆåˆ©ç‡)ï¼¾è¿˜æ¬¾æœˆæ•°-1))
+        // Ã¿ÔÂ±¾Ï¢½ğ¶î  = (±¾½ğ¡ÁÔÂÀûÂÊ¡Á(1£«ÔÂÀûÂÊ)£Ş»¹¿îÔÂÊı)¡Â ((1£«ÔÂÀûÂÊ)£Ş»¹¿îÔÂÊı-1))
         double monthIncome = (invest* monthRate * Math.pow(1+monthRate,month))/(Math.pow(1+monthRate,month)-1);
-        //å››èˆäº”å…¥æˆªå–åä¸¤ä½
+        //ËÄÉáÎåÈë½ØÈ¡ºóÁ½Î»
         String result = String.format("%.2f", monthIncome);
 
-        System.out.println("æ¯æœˆæœ¬æ¯é‡‘é¢ : " + result);
+        System.out.println("Ã¿ÔÂ±¾Ï¢½ğ¶î : " + result);
         System.out.println("---------------------------------------------------");
 
-        // æ¯æœˆæœ¬é‡‘ = æœ¬é‡‘Ã—æœˆåˆ©ç‡Ã—(1+æœˆåˆ©ç‡)^(è¿˜æ¬¾æœˆåºå·-1)Ã·((1+æœˆåˆ©ç‡)^è¿˜æ¬¾æœˆæ•°-1))
+        // Ã¿ÔÂ±¾½ğ = ±¾½ğ¡ÁÔÂÀûÂÊ¡Á(1+ÔÂÀûÂÊ)^(»¹¿îÔÂĞòºÅ-1)¡Â((1+ÔÂÀûÂÊ)^»¹¿îÔÂÊı-1))
         double monthCapital = 0;
         for(int i=1;i<month+1;i++){
             monthCapital = (invest* monthRate * (Math.pow((1+monthRate),i-1)))/(Math.pow(1+monthRate,month)-1);
-            //å››èˆäº”å…¥æˆªå–åä¸¤ä½
+            //ËÄÉáÎåÈë½ØÈ¡ºóÁ½Î»
             String monthCapital1 = String.format("%.2f", monthCapital);
-            System.out.println("ç¬¬" + i + "æœˆæœ¬é‡‘ï¼š " + monthCapital1);
+            System.out.println("µÚ" + i + "ÔÂ±¾½ğ£º " + monthCapital1);
         }
         System.out.println("---------------------------------------------------");
 
 
-        // æ¯æœˆåˆ©æ¯  = å‰©ä½™æœ¬é‡‘ x è´·æ¬¾æœˆåˆ©ç‡
+        // Ã¿ÔÂÀûÏ¢  = Ê£Óà±¾½ğ x ´û¿îÔÂÀûÂÊ
         double monthInterest = 0;
         double capital = invest;
         double tmpCapital = 0;
@@ -47,36 +47,36 @@ public class MakeLoan {
             capital = capital - tmpCapital;
             monthInterest = capital * monthRate;
             tmpCapital = (invest* monthRate * (Math.pow((1+monthRate),i-1)))/(Math.pow(1+monthRate,month)-1);
-            //å››èˆäº”å…¥æˆªå–åä¸¤ä½
+            //ËÄÉáÎåÈë½ØÈ¡ºóÁ½Î»
             String ssa = String.format("%.2f", monthInterest);
-            System.out.println("ç¬¬" + i + "æœˆåˆ©æ¯ï¼š " + ssa);
+            System.out.println("µÚ" + i + "ÔÂÀûÏ¢£º " + ssa);
             totalInterest = totalInterest + monthInterest;
 
         }
 
         System.out.println("-------------------------------------------------");
-        //å››èˆäº”å…¥æˆªå–åä¸¤ä½
+        //ËÄÉáÎåÈë½ØÈ¡ºóÁ½Î»
         String ss = String.format("%.2f", totalInterest);
-        System.out.println("æ€»åˆ©æ¯ï¼š--->"+ss+" å…ƒ");
+        System.out.println("×ÜÀûÏ¢£º--->"+ss+" Ôª");
         System.out.println("-------------------------------------------------");
-        System.out.println("å¹´åˆ©ç‡ï¼š--->"+yearRate*100+"%");
+        System.out.println("ÄêÀûÂÊ£º--->"+yearRate*100+"%");
         System.out.println("-------------------------------------------------");
-        System.out.println("å€Ÿæ¬¾æœŸé™ : " + month/12+" å¹´");
+        System.out.println("½è¿îÆÚÏŞ : " + month/12+" Äê");
         System.out.println("-------------------------------------------------");
-        System.out.println("æ¯æœˆè¿˜æ¬¾æœ¬æ¯é‡‘é¢ : " + result+" å…ƒ");
+        System.out.println("Ã¿ÔÂ»¹¿î±¾Ï¢½ğ¶î : " + result+" Ôª");
     }
 
     /**
-     * è·å–æ¯æœˆæœ¬æ¯é‡‘é¢
-     * è®¡ç®—æ–¹å¼
-     * æ¯æœˆæœ¬æ¯é‡‘é¢  = (æœ¬é‡‘Ã—æœˆåˆ©ç‡Ã—(1ï¼‹æœˆåˆ©ç‡)ï¼¾è¿˜æ¬¾æœˆæ•°)Ã· ((1ï¼‹æœˆåˆ©ç‡)ï¼¾è¿˜æ¬¾æœˆæ•°-1))
-     * @param invest  æœ¬é‡‘
-     * @param yearRate å¹´åˆ©ç‡
-     * @param month   è¿˜æ¬¾æœˆ
-     * @return  æ¯æœˆæœ¬æ¯é‡‘é¢
+     * »ñÈ¡Ã¿ÔÂ±¾Ï¢½ğ¶î
+     * ¼ÆËã·½Ê½
+     * Ã¿ÔÂ±¾Ï¢½ğ¶î  = (±¾½ğ¡ÁÔÂÀûÂÊ¡Á(1£«ÔÂÀûÂÊ)£Ş»¹¿îÔÂÊı)¡Â ((1£«ÔÂÀûÂÊ)£Ş»¹¿îÔÂÊı-1))
+     * @param invest  ±¾½ğ
+     * @param yearRate ÄêÀûÂÊ
+     * @param month   »¹¿îÔÂ
+     * @return  Ã¿ÔÂ±¾Ï¢½ğ¶î
      */
     public double getMonthIncome(double invest, double yearRate,int month){
-        double monthRate = yearRate/12;   //æœˆåˆ©ç‡
+        double monthRate = yearRate/12;   //ÔÂÀûÂÊ
         double monthIncome = (invest* monthRate * Math.pow(1+monthRate,month))/(Math.pow(1+monthRate,month)-1);
         return monthIncome;
     }

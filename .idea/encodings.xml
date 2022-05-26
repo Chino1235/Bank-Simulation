@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/src/banksimulate/ClientReceipt.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/banksimulate/DepositType.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/banksimulate/Log.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/banksimulate/MakeLoan.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/banksimulate/Simulator.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/uiDesigning/AccountMgrForm.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/uiDesigning/Calculator.java" charset="GBK" />
