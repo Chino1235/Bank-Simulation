@@ -101,6 +101,7 @@ public class Client {
         this.setProfile(this.getProfile()-profile);
     }
 
+
     @Override
     public String toString() {
         return "Client{" +

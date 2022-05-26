@@ -1,9 +1,13 @@
 package uiDesigning;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Objects;
 
 public class Calculator {
     Button button1 = new Button("1");
@@ -20,9 +24,9 @@ public class Calculator {
     Button buttonp = new Button(".");
     Button buttonadd = new Button("+");
     Button buttonmin = new Button("-");
-    Button buttonmul = new Button("¡Á");
-    Button buttondiv = new Button("¡Â");
-    Button buttonpes = new Button("%");
+    Button buttonmul = new Button("*");
+    Button buttondiv = new Button("/");
+    Button buttonpes = new Button("BackSpace");
     Button buttonequ = new Button("=");
 
     TextField txt = new TextField();
@@ -64,7 +68,110 @@ public class Calculator {
                 mainFrame.setVisible(false);
             }
         });
+
+        button0.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + button0.getLabel();
+            txt.setText(finall);
+        });
+
+        button1.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + button1.getLabel();
+            txt.setText(finall);
+        });
+
+        button2.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + button2.getLabel();
+            txt.setText(finall);
+        });
+        button3.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + button3.getLabel();
+            txt.setText(finall);
+        });
+        button4.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + button4.getLabel();
+            txt.setText(finall);
+        });
+        button5.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + button5.getLabel();
+            txt.setText(finall);
+        });
+        button6.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + button6.getLabel();
+            txt.setText(finall);
+        });
+        button7.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + button7.getLabel();
+            txt.setText(finall);
+        });
+        button8.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + button8.getLabel();
+            txt.setText(finall);
+        });
+        button9.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + button9.getLabel();
+            txt.setText(finall);
+        });
+        button00.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + button00.getLabel();
+            txt.setText(finall);
+        });
+        buttonp.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + buttonp.getLabel();
+            txt.setText(finall);
+        });
+        buttonadd.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + buttonadd.getLabel();
+            txt.setText(finall);
+        });
+        buttonmin.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + buttonmin.getLabel();
+            txt.setText(finall);
+        });
+        buttonmul.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + buttonmul.getLabel();
+            txt.setText(finall);
+        });
+        buttondiv.addActionListener(e->{
+            String origin = txt.getText();
+            String finall = origin + buttondiv.getLabel();
+            txt.setText(finall);
+        });
+        buttonpes.addActionListener(e->{
+            String origin = txt.getText();
+            if(!Objects.equals(origin, "")){
+                String finall = origin.substring(0,origin.length()-1);
+                txt.setText(finall);
+            }
+        });
+        buttonequ.addActionListener(e->{
+            ScriptEngineManager manager = new ScriptEngineManager();
+            ScriptEngine scriptEngine = manager.getEngineByName("js");
+            String script = txt.getText();
+            try {
+                Object result = scriptEngine.eval(script);
+                txt.setText(result.toString());
+            } catch (ScriptException ex) {
+                JOptionPane.showMessageDialog(null,"´íÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
+            }
+        });
     }
+
+
 
     public static void main(String[] args) {
         new Calculator();
