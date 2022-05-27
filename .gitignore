@@ -2,3 +2,5 @@
 *.class
 *.class
 .idea/misc.xml
+*.class
+.idea/misc.xml
