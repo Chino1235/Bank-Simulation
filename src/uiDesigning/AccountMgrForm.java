@@ -1,15 +1,8 @@
 package uiDesigning;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 import static banksimulate.Simulator.*;
 
@@ -55,7 +48,7 @@ public class AccountMgrForm {
         p4.add(confirm);
         p4.add(cancel);
 
-        mainFrame.setLayout(new GridLayout(4,1));
+        mainFrame.setLayout(new GridLayout(5,1));
         mainFrame.add(p0);
         mainFrame.add(p1);
         mainFrame.add(p2);
@@ -78,24 +71,11 @@ public class AccountMgrForm {
         oldtxt.setEchoChar('*');
 
         confirm.addActionListener(e -> {
-            try {
-                Connection conn = null;
-                Statement stat = null;
                 String accountnum = accounttxt.getText();
                 String oldpass = old.getText();
                 String newpass = newtxt.getText();
                 String sql = "UPDATE bank.client SET password='" + newpass + "' WHERE account="+accountnum+";";
-                Class.forName(DBDRIVER);
-                conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
-                stat =conn.createStatement();
-                stat.executeUpdate(sql);
-                stat.close();
-                conn.close();
-            } catch (ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null,"ÏµÍ³´íÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null,"SQL´íÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
-            }
+                executeSql(sql);
 
         });
     }
