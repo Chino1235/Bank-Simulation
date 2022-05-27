@@ -5,11 +5,11 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class ClientLoginForm {
-    Label account = new Label("ÕËºÅ£º");
-    Label password = new Label("ÃÜÂë£º");
+    Label account = new Label("è´¦å·ï¼š");
+    Label password = new Label("å¯†ç ï¼š");
     TextField accounttxt = new TextField();
     TextField passtxt = new TextField();
-    Button confirm = new Button("È·¶¨");
+    Button confirm = new Button("ç¡®å®š");
     Label message = new Label();
 
     Panel p1 = new Panel();
@@ -38,7 +38,7 @@ public class ClientLoginForm {
 
         mainFrame.setSize(300,300);
         mainFrame.setVisible(true);
-        mainFrame.setTitle("¿Í»§µÇÂ¼");
+        mainFrame.setTitle("å®¢æˆ·ç™»å½•");
         mainFrame.pack();
 
         accounttxt.setSize(200,50);
