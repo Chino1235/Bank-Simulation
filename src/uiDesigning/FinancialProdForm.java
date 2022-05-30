@@ -56,5 +56,11 @@ public class FinancialProdForm {
         mainFrame.setTitle("¹ºÂòÀí²Æ");
 
         cancel.addActionListener(e -> mainFrame.setVisible(false));
+
+        confirm.addActionListener(e -> {
+            String type = (String) typess.getSelectedItem();
+            double profile = Double.parseDouble(profiletxt.getText());
+            
+        });
     }
 }
