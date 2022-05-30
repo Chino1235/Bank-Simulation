@@ -52,6 +52,10 @@ public class WithdrawAppointment {
         });
 
         cancel.addActionListener(e -> mainFrame.setVisible(false));
+
+        confirm.addActionListener(e -> {
+            
+        });
     }
 
 
