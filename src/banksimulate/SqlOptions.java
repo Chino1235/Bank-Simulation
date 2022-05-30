@@ -46,4 +46,26 @@ public class SqlOptions {
             JOptionPane.showMessageDialog(null,"SQL错误","错误",JOptionPane.ERROR_MESSAGE);
         }*/
     }
+
+    public static String queryPassword(String account) throws ClassNotFoundException,SQLException{
+        //try {
+        Connection conn = null;
+        Statement stat = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT bank.client.password from client where account='"+account+"';";
+        Class.forName(DBDRIVER);
+        conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
+        stat =conn.createStatement();
+        resultSet = stat.executeQuery(sql);
+        String password = resultSet.getString("password");
+        stat.close();
+        conn.close();
+        return password;
+        /*} catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null,"系统错误","错误",JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"SQL错误","错误",JOptionPane.ERROR_MESSAGE);
+        }*/
+    }
+
 }
