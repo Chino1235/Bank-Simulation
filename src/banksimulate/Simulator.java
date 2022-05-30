@@ -1,7 +1,12 @@
 package banksimulate;
 
+import javax.swing.*;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
+
+import static banksimulate.MakeLoan.Loan;
 
 public class Simulator {
 
@@ -16,16 +21,13 @@ public class Simulator {
 
 
     static Client client = new Client("John","62170009666666666666666","000000",0);
-    public static final String DBDRIVER = "org.gjt.mm.mysql.Driver";
-    public static final String DBURL = "jdbc:mysql://localhost:3306/resources";
-    public static final String DBUSER = "root";
-    public static final String DBPASS = "root";
+
 
     public static void menu(){
         System.out.println("┏──────────────────────────────┓");
         System.out.println("│       欢  迎  您  来  到       │");
-        System.out.println("│        次   元   银   行       │");
-        System.out.println("│       请  选  择  操   作      │");
+        System.out.println("│       贰  次  元  银  行       │");
+        System.out.println("│       请  选  择  操  作       │");
         System.out.println("│       1.活  期  存  款         │");
         System.out.println("│       2.整  存  整  取         │");
         System.out.println("│       3.零  存  整  取         │");
@@ -35,6 +37,7 @@ public class Simulator {
         System.out.println("│       7.生  活  缴  费         │");
         System.out.println("│       8.修  改  密  码         │");
         System.out.println("│       9.亲  友  转  账         │");
+        System.out.println("│      10.办  理  贷  款         │");
         System.out.println("│       0.退         卡         │");
         System.out.println("┗──────────────────────────────┛");
     }
@@ -244,6 +247,10 @@ public class Simulator {
                     System.out.println("缴费成功,银行卡余额为：" + currentProfile + "元!");
                     break;
 
+                }
+                case 10:{
+                    Loan();
+                    break;
                 }
                 case 0:{
                     System.out.println("感谢您的光临");
