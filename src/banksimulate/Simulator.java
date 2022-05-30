@@ -1,7 +1,10 @@
 package banksimulate;
 
+import javax.swing.*;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
 
 import static banksimulate.MakeLoan.Loan;
 
@@ -18,10 +21,7 @@ public class Simulator {
 
 
     static Client client = new Client("John","62170009666666666666666","000000",0);
-    public static final String DBDRIVER = "org.gjt.mm.mysql.Driver";
-    public static final String DBURL = "jdbc:mysql://localhost:3306/resources";
-    public static final String DBUSER = "root";
-    public static final String DBPASS = "root";
+
 
     public static void menu(){
         System.out.println("©³©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©·");

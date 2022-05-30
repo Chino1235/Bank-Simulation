@@ -2,16 +2,12 @@ package uiDesigning;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import static banksimulate.Simulator.*;
+import static banksimulate.SqlOptions.executeSql;
 
 public class AccountMgrForm {
     Label account = new Label("账号");
@@ -55,7 +51,7 @@ public class AccountMgrForm {
         p4.add(confirm);
         p4.add(cancel);
 
-        mainFrame.setLayout(new GridLayout(4,1));
+        mainFrame.setLayout(new GridLayout(5,1));
         mainFrame.add(p0);
         mainFrame.add(p1);
         mainFrame.add(p2);
@@ -78,23 +74,17 @@ public class AccountMgrForm {
         oldtxt.setEchoChar('*');
 
         confirm.addActionListener(e -> {
-            try {
-                Connection conn = null;
-                Statement stat = null;
                 String accountnum = accounttxt.getText();
                 String oldpass = old.getText();
                 String newpass = newtxt.getText();
                 String sql = "UPDATE bank.client SET password='" + newpass + "' WHERE account="+accountnum+";";
-                Class.forName(DBDRIVER);
-                conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
-                stat =conn.createStatement();
-                stat.executeUpdate(sql);
-                stat.close();
-                conn.close();
+                JOptionPane.showMessageDialog(null,"修改密码成功","信息",JOptionPane.INFORMATION_MESSAGE);
+            try {
+                executeSql(sql);
             } catch (ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null,"系统错误","错误",JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null,"SQL错误","错误",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"您输入的账号不正确","错误",JOptionPane.ERROR_MESSAGE);
             }
 
         });
