@@ -1,5 +1,6 @@
 package uiDesigning;
 
+import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -61,7 +62,14 @@ public class ClientOpenAccount {
         });
 
         submit.addActionListener(e -> {
-
+            String name = clientName.getText();
+            String accoun = account.getText();
+            String passwd = password.getText();
+            //todo:判断确认密码是否正确，若错误弹出
+            //JOptionPane.showMessageDialog(null,"两次密码输入不一致","错误",JOptionPane.ERROR_MESSAGE);
+            //todo:判断账号是否已注册，若已注册弹出
+            //JOptionPane.showMessageDialog(null,"账号已注册","错误",JOptionPane.ERROR_MESSAGE);
+            //todo：执行数据库插入操作
         });
     }
 }
