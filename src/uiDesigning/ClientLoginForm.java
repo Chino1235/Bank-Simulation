@@ -12,12 +12,12 @@ import static banksimulate.SqlOptions.accountExist;
 import static banksimulate.SqlOptions.queryPassword;
 
 public class ClientLoginForm {
-    Label account = new Label("è´¦å·ï¼š");
-    Label password = new Label("å¯†ç ï¼š");
+    Label account = new Label("ÕËºÅ£º");
+    Label password = new Label("ÃÜÂë£º");
     TextField accounttxt = new TextField();
     TextField passtxt = new TextField();
-    Button confirm = new Button("ç¡®å®š");
-    Button openacc = new Button("æ²¡æœ‰è´¦æˆ·ï¼Ÿç«‹å³å¼€æˆ·ï¼");
+    Button confirm = new Button("È·¶¨");
+    Button openacc = new Button("Ã»ÓĞÕË»§£¿Á¢¼´¿ª»§£¡");
     Label message = new Label();
 
     Panel p1 = new Panel();
@@ -46,7 +46,7 @@ public class ClientLoginForm {
 
         mainFrame.setSize(300,300);
         mainFrame.setVisible(true);
-        mainFrame.setTitle("å®¢æˆ·ç™»å½•");
+        mainFrame.setTitle("¿Í»§µÇÂ¼");
         mainFrame.pack();
 
         accounttxt.setSize(200,50);
@@ -66,17 +66,17 @@ public class ClientLoginForm {
             try {
                 String correctPass = queryPassword(account);
                 if(!accountExist(account)){
-                    JOptionPane.showMessageDialog(null,"æœªå¼€æˆ·æˆ–è´¦å·æœ‰è¯¯","é”™è¯¯",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Î´¿ª»§»òÕËºÅÓĞÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
                 }
                 else if(!password.equals(correctPass)){
-                    JOptionPane.showMessageDialog(null,"å¯†ç é”™è¯¯","é”™è¯¯",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"ÃÜÂë´íÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
                 } else{
                     new ClientMainForm();
                 }
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null,"SQLé”™è¯¯","é”™è¯¯",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"SQL´íÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
             }
         });
 

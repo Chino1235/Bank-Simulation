@@ -1,6 +1,7 @@
 package Manager;
 
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Scanner;
 
 import static banksimulate.SqlOptions.executeSql;
@@ -23,15 +24,13 @@ public class ClientManager implements Manager{
         System.out.println("请再次确认密码：：");
         confirm = sc.nextLine();
         try {
-            if(confirm == password){
+            if(Objects.equals(confirm, password)){
                 executeSql("INSERT INTO bank.client(account,name,password) VALUES ('"+account+"','"+name+"','"+password+"');");
                 System.out.println("用户添加成功！");
             }else{
                 System.out.print("两次密码不一致，请重新输入所有信息！");
             }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
