@@ -1,8 +1,15 @@
 package uiDesigning;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
+
+import static banksimulate.SqlOptions.accountExist;
+import static banksimulate.SqlOptions.queryPassword;
 
 public class ClientLoginForm {
     Label account = new Label("账号：");
@@ -10,6 +17,7 @@ public class ClientLoginForm {
     TextField accounttxt = new TextField();
     TextField passtxt = new TextField();
     Button confirm = new Button("确定");
+    Button openacc = new Button("没有账户？立即开户！");
     Label message = new Label();
 
     Panel p1 = new Panel();
@@ -33,7 +41,7 @@ public class ClientLoginForm {
 
         mainFrame.add(p3);
         p3.add(confirm);
-        p3.add(message);
+        p3.add(openacc);
 
 
         mainFrame.setSize(300,300);
@@ -49,6 +57,26 @@ public class ClientLoginForm {
             @Override
             public void windowClosing(WindowEvent e) {
                 mainFrame.setVisible(false);
+            }
+        });
+
+        confirm.addActionListener(e -> {
+            String account = accounttxt.getText();
+            String password = passtxt.getText();
+            try {
+                String correctPass = queryPassword(account);
+                if(!accountExist(account)){
+                    JOptionPane.showMessageDialog(null,"未开户或账号有误","错误",JOptionPane.ERROR_MESSAGE);
+                }
+                else if(!password.equals(correctPass)){
+                    JOptionPane.showMessageDialog(null,"密码错误","错误",JOptionPane.ERROR_MESSAGE);
+                } else{
+                    new ClientMainForm();
+                }
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,"SQL错误","错误",JOptionPane.ERROR_MESSAGE);
             }
         });
 
