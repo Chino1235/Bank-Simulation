@@ -68,4 +68,25 @@ public class SqlOptions {
         }*/
     }
 
+    public static boolean accountExist(String account) throws ClassNotFoundException,SQLException{
+        //try {
+        Connection conn = null;
+        Statement stat = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT bank.client.account from client where account='"+account+"';";
+        Class.forName(DBDRIVER);
+        conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
+        stat =conn.createStatement();
+        resultSet = stat.executeQuery(sql);
+        stat.close();
+        conn.close();
+        return resultSet.next();
+
+        /*} catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null,"系统错误","错误",JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"SQL错误","错误",JOptionPane.ERROR_MESSAGE);
+        }*/
+    }
+
 }
