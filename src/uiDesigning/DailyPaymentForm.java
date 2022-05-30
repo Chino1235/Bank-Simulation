@@ -8,8 +8,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 
-import static banksimulate.Simulator.executeSql;
-import static banksimulate.Simulator.queryProfile;
+import static banksimulate.SqlOptions.executeSql;
+import static banksimulate.SqlOptions.queryProfile;
+
 
 public class DailyPaymentForm {
     Label account = new Label("’À∫≈£∫");

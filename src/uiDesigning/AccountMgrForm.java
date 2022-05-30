@@ -1,10 +1,13 @@
 package uiDesigning;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 
 import static banksimulate.Simulator.*;
+import static banksimulate.SqlOptions.executeSql;
 
 public class AccountMgrForm {
     Label account = new Label("账号");
@@ -75,7 +78,14 @@ public class AccountMgrForm {
                 String oldpass = old.getText();
                 String newpass = newtxt.getText();
                 String sql = "UPDATE bank.client SET password='" + newpass + "' WHERE account="+accountnum+";";
+                JOptionPane.showMessageDialog(null,"修改密码成功","信息",JOptionPane.INFORMATION_MESSAGE);
+            try {
                 executeSql(sql);
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,"您输入的账号不正确","错误",JOptionPane.ERROR_MESSAGE);
+            }
 
         });
     }
