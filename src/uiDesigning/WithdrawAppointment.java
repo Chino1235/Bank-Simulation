@@ -1,5 +1,6 @@
 package uiDesigning;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,7 +55,7 @@ public class WithdrawAppointment {
         cancel.addActionListener(e -> mainFrame.setVisible(false));
 
         confirm.addActionListener(e -> {
-            
+            JOptionPane.showMessageDialog(null,"预约成功","信息",JOptionPane.INFORMATION_MESSAGE);
         });
     }
 
