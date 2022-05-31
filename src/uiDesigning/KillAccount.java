@@ -1,8 +1,12 @@
 package uiDesigning;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
+
+import static banksimulate.SqlOptions.*;
 
 public class KillAccount {
     Label name = new Label("姓名：");
@@ -54,15 +58,38 @@ public class KillAccount {
         });
 
         submit.addActionListener(e->{
-            String account;
-            String name;
-            String password;
-            double profile;
+            String accountt= account.getText();
+            String name = clientName.getText();
+            String passwd=password.getText();
+            double profile=queryProfile(accountt);
 //todo:查询账号是否存在，若不存在弹窗提示（弹窗我来写）
+            try {
+                if(!accountExist(accountt)){
+                    JOptionPane.showMessageDialog(null,"账号已注册","错误",JOptionPane.ERROR_MESSAGE);
+                }
 //ToDo：确认余额为0，若不为0弹窗提示（弹窗我来写）
+                if(profile!=0){
+                    JOptionPane.showMessageDialog(null,"余额不为0","错误",JOptionPane.ERROR_MESSAGE);
+                }
 //ToDo：确认密码正确，若不正确弹窗
+                String passwd1=queryPassword(accountt);
+                if(!passwd1.equals(passwd)){
+                    JOptionPane.showMessageDialog(null,"密码不正确","错误",JOptionPane.ERROR_MESSAGE);
+                }
 //ToDo：确认姓名正确，若不正确，弹窗
+                String name1=queryName(accountt);
+                if(!name1.equals(name)){
+                    JOptionPane.showMessageDialog(null,"姓名不正确","错误",JOptionPane.ERROR_MESSAGE);
+                }
 //ToDo：执行数据库删除操作
+                executeSql("insert into bank.client(account,name,password) value ('"+accountt+"','"+name+"','"+passwd+"');");
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         });
     }
+
+
 }
