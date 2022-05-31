@@ -84,6 +84,7 @@ public class AccountMgrForm {
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             } catch (SQLException ex) {
+                ex.printStackTrace();
                 JOptionPane.showMessageDialog(null,"您输入的账号不正确","错误",JOptionPane.ERROR_MESSAGE);
             }
 

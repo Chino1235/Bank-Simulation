@@ -87,8 +87,10 @@ public class TransferForm {
                 executeSql(logsqlout);
                 executeSql(logsqlin);
             } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
                 JOptionPane.showMessageDialog(null,"ÏµÍ³´íÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
             } catch (SQLException ex) {
+                ex.printStackTrace();
                 JOptionPane.showMessageDialog(null,"SQL´íÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
             }
         });

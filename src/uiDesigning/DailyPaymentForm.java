@@ -91,8 +91,10 @@ public class DailyPaymentForm {
                     executeSql(logsql);
                 }
             } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
                 JOptionPane.showMessageDialog(null,"系统错误","错误",JOptionPane.ERROR_MESSAGE);
             } catch (SQLException ex) {
+                ex.printStackTrace();
                 JOptionPane.showMessageDialog(null,"您输入的账号有误","错误",JOptionPane.ERROR_MESSAGE);
             }
         });
