@@ -92,7 +92,7 @@ public class SqlOptions {
         }*/
     }
 
-    public ResultSet queryClientLog(String account) throws ClassNotFoundException,SQLException{
+    public static ResultSet queryClientLog(String account) throws ClassNotFoundException,SQLException{
         Connection conn = null;
         Statement stat = null;
         ResultSet resultSet = null;
@@ -106,7 +106,7 @@ public class SqlOptions {
         return resultSet;
     }
 
-    public ResultSet queryAllLog() throws ClassNotFoundException,SQLException {
+    public static ResultSet queryAllLog() throws ClassNotFoundException,SQLException {
         Connection conn = null;
         Statement stat = null;
         ResultSet resultSet = null;
