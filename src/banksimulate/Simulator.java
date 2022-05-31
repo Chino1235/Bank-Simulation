@@ -21,10 +21,7 @@ public class Simulator {
 
 
     static Client client = new Client("John","62170009666666666666666","000000",0);
-    public static final String DBDRIVER = "org.gjt.mm.mysql.Driver";
-    public static final String DBURL = "jdbc:mysql://localhost:3306/resources";
-    public static final String DBUSER = "root";
-    public static final String DBPASS = "root";
+
 
     public static void menu(){
         System.out.println("©³©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©·");
@@ -278,44 +275,7 @@ public class Simulator {
         depositList.add(depositType);
     }
 
-    public static void executeSql(String sql){
-        try {
-            Connection conn = null;
-            Statement stat = null;
-            Class.forName(DBDRIVER);
-            conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
-            stat =conn.createStatement();
-            stat.executeUpdate(sql);
-            stat.close();
-            conn.close();
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null,"ÏµÍ³´íÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"SQL´íÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
-        }
-    }
 
-    public static double queryProfile(String account) throws ClassNotFoundException,SQLException{
-        //try {
-            Connection conn = null;
-            Statement stat = null;
-            ResultSet resultSet = null;
-            String sql = "SELECT bank.client.profile from client where account='"+account+"';";
-            Class.forName(DBDRIVER);
-            conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
-            stat =conn.createStatement();
-            resultSet = stat.executeQuery(sql);
-            double profile = resultSet.getDouble("profile");
-            stat.close();
-            conn.close();
-            return profile;
-        /*} catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null,"ÏµÍ³´íÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"SQL´íÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
-        }*/
-
-    }
 
 
 }

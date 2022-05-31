@@ -56,5 +56,12 @@ public class FinancialProdForm {
         mainFrame.setTitle("购买理财");
 
         cancel.addActionListener(e -> mainFrame.setVisible(false));
+
+        confirm.addActionListener(e -> {
+            String type = (String) typess.getSelectedItem();
+            double profile = Double.parseDouble(profiletxt.getText());
+            String number = (String) typess.getSelectedItem();
+            JOptionPane.showMessageDialog(null,"预约成功","信息",JOptionPane.INFORMATION_MESSAGE);
+        });
     }
 }

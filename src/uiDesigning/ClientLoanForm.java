@@ -7,7 +7,8 @@ import java.awt.event.WindowEvent;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 
-import static banksimulate.Simulator.*;
+import static banksimulate.SqlOptions.executeSql;
+import static banksimulate.SqlOptions.queryProfile;
 
 public class ClientLoanForm {
     Label account = new Label("’À∫≈£∫");
