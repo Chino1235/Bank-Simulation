@@ -1,5 +1,7 @@
 package Manager;
 
+import uiDesigning.KillAccount;
+
 import java.util.Scanner;
 
 import static Manager.LogView.logView;
@@ -63,11 +65,31 @@ public class Administrator {
         System.out.println("1.客户信息管理");
         System.out.println("2.理财信息管理");
         System.out.println("3.银行流水查看");
+        System.out.println("4.销户");
         System.out.println("0.退出系统");
     }
 
     public static boolean adminLogin(){
         //todo:无需访问数据库
+        String name;
+        String name1 = "root";
+        String password;
+        String password1 = "root";
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入管理员账号：");
+        name = sc.nextLine();
+        System.out.println("请输入密码：");
+        password = sc.nextLine();
+
+        if (name.equals(name1)) {
+            if (password.equals(password1)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
     public static void main(String[] args) {
@@ -87,6 +109,8 @@ public class Administrator {
                     case 3:
                         logView();
                         break;
+                    case 4:
+                        new KillAccount();
                     default:
                         System.out.println("非法输入");
                         break;
