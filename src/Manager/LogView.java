@@ -44,13 +44,11 @@ public class LogView {
             //数据库驱动类异常处理
             System.out.println("Sorry,can`t find the Driver!");
             e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             //数据库连接失败异常处理
             e.printStackTrace();
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        } finally {
+        }
+        finally {
             System.out.println("数据库数据成功获取！！");
         }
     }
