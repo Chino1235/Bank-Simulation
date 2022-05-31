@@ -77,7 +77,7 @@ public class AccountMgrForm {
                 String accountnum = accounttxt.getText();
                 String oldpass = old.getText();
                 String newpass = newtxt.getText();
-                String sql = "UPDATE bank.client SET password='" + newpass + "' WHERE account="+accountnum+";";
+                String sql = "UPDATE bank.client SET password='" + newpass + "' WHERE account='"+accountnum+"';";
                 JOptionPane.showMessageDialog(null,"修改密码成功","信息",JOptionPane.INFORMATION_MESSAGE);
             try {
                 executeSql(sql);
