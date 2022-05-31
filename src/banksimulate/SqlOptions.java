@@ -58,8 +58,8 @@ public class SqlOptions {
         Class.forName(DBDRIVER);
         conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
         stat =conn.createStatement();
-        resultSet.next();
         resultSet = stat.executeQuery(sql);
+        resultSet.next();
         String password = resultSet.getString("password");
         stat.close();
         conn.close();
@@ -80,8 +80,8 @@ public class SqlOptions {
         Class.forName(DBDRIVER);
         conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
         stat =conn.createStatement();
-        resultSet.next();
         resultSet = stat.executeQuery(sql);
+        resultSet.next();
         String name = resultSet.getString("password");
         stat.close();
         conn.close();
