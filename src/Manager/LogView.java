@@ -12,7 +12,7 @@ import static banksimulate.SqlOptions.queryAllLog;
 
 public class LogView {
 
-    public static void logView(String[] args) {
+    public static void logView() {
 
 
         try {
