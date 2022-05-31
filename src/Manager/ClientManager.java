@@ -49,4 +49,15 @@ public class ClientManager implements Manager{
     public void query() {
 
     }
+
+    public static void menu(){
+        System.out.println("您已进入客户信息管理系统");
+        System.out.println("请谨慎操作");
+        System.out.println("请选择您需要的操作");
+        System.out.println("1.添加客户");
+        System.out.println("2.删除客户");
+        System.out.println("3.修改客户");
+        System.out.println("4.查询客户");
+        System.out.println("0.退出系统");
+    }
 }
