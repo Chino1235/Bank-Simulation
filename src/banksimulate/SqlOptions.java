@@ -142,4 +142,18 @@ public class SqlOptions {
         return resultSet;
     }
 
+    public static ResultSet queryFinancialProd(String column,String value) throws ClassNotFoundException,SQLException {
+        Connection conn = null;
+        Statement stat = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT * from bank.financial_products where "+column+"='"+value+"';";
+        Class.forName(DBDRIVER);
+        conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
+        stat =conn.createStatement();
+        resultSet = stat.executeQuery(sql);
+        stat.close();
+        conn.close();
+        return resultSet;
+    }
+
 }
