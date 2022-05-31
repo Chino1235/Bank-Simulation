@@ -4,8 +4,9 @@ import javax.swing.*;
 import java.sql.*;
 
 public class SqlOptions {
-    public static final String DBDRIVER = "org.gjt.mm.mysql.Driver";
-    public static final String DBURL = "jdbc:mysql://localhost:3306/resources";
+    public static final String DBDRIVER = "com.mysql.jdbc.Driver";
+    public static final String DBURL = "jdbc:mysql://localhost:3306/bank";
+    public static final String DBURL1 = "jdbc:mysql://localhost:3306/bank_log";
     public static final String DBUSER = "root";
     public static final String DBPASS = "root";
 
@@ -36,6 +37,7 @@ public class SqlOptions {
         conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
         stat =conn.createStatement();
         resultSet = stat.executeQuery(sql);
+        resultSet.next();
         double profile = resultSet.getDouble("profile");
         stat.close();
         conn.close();
@@ -56,6 +58,7 @@ public class SqlOptions {
         Class.forName(DBDRIVER);
         conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
         stat =conn.createStatement();
+        resultSet.next();
         resultSet = stat.executeQuery(sql);
         String password = resultSet.getString("password");
         stat.close();
@@ -87,6 +90,34 @@ public class SqlOptions {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"SQL错误","错误",JOptionPane.ERROR_MESSAGE);
         }*/
+    }
+
+    public ResultSet queryClientLog(String account) throws ClassNotFoundException,SQLException{
+        Connection conn = null;
+        Statement stat = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT * from bank_log.banklog where account='"+account+"';";
+        Class.forName(DBDRIVER);
+        conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
+        stat =conn.createStatement();
+        resultSet = stat.executeQuery(sql);
+        stat.close();
+        conn.close();
+        return resultSet;
+    }
+
+    public ResultSet queryAllLog() throws ClassNotFoundException,SQLException {
+        Connection conn = null;
+        Statement stat = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT * from bank_log.banklog;";
+        Class.forName(DBDRIVER);
+        conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
+        stat =conn.createStatement();
+        resultSet = stat.executeQuery(sql);
+        stat.close();
+        conn.close();
+        return resultSet;
     }
 
 }
