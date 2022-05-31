@@ -87,6 +87,8 @@ public class DailyPaymentForm {
                     double nowProfile = currentProfile-payment;
                     executeSql("UPDATE bank.client SET profile='"+nowProfile+"' where account='"+account+"';");
                     JOptionPane.showMessageDialog(null,"缴费成功","信息",JOptionPane.INFORMATION_MESSAGE);
+                    String logsql = "insert into bank_log.banklog(account,profile,option) values ('"+account+"','"+profile+"','生活缴费');";
+                    executeSql(logsql);
                 }
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null,"系统错误","错误",JOptionPane.ERROR_MESSAGE);

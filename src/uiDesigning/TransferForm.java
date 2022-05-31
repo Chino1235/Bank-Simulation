@@ -82,6 +82,10 @@ public class TransferForm {
                     executeSql("UPDATE bank.client SET profile='"+accProfileNow+"' WHERE account='"+account+"'; ");
                     executeSql("UPDATE bank.client SET profile='"+accThisProfileNow+"' WHERE account='"+thisAccount+"'; ");
                 }
+                String logsqlout = "insert into bank_log.banklog(account,profile,option) values ('"+thisAccount+"','"+profile+"','transfer out');";
+                String logsqlin = "insert into bank_log.banklog(account,profile,option) values ('"+account+"','"+profile+"','transfer in');";
+                executeSql(logsqlout);
+                executeSql(logsqlin);
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null,"ÏµÍ³´íÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
             } catch (SQLException ex) {
