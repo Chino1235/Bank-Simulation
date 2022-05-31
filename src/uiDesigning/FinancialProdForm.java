@@ -61,7 +61,7 @@ public class FinancialProdForm {
             String type = (String) typess.getSelectedItem();
             double profile = Double.parseDouble(profiletxt.getText());
             String number = (String) typess.getSelectedItem();
-            JOptionPane.showMessageDialog(null,"预约成功","信息",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"购买成功","信息",JOptionPane.INFORMATION_MESSAGE);
         });
     }
 }
