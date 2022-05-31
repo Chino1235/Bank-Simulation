@@ -1,14 +1,15 @@
 package Manager;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Scanner;
 
 import static banksimulate.SqlOptions.executeSql;
+import static banksimulate.SqlOptions.queryFinancialProd;
 
 public class FinancialProductManager implements Manager{
     String name;
-    String confirm;
     String annual_yield;
     Scanner scanner = new Scanner(System.in);
     String id;
@@ -21,12 +22,8 @@ public class FinancialProductManager implements Manager{
         System.out.println("理财产品年收益：");
         annual_yield = scanner.nextLine();
         try {
-            if (Objects.equals(confirm, name)) {
-                executeSql("INSERT INTO bank.financial_products(name,annual_yield) VALUES ('" + name + "','" + annual_yield + "');");
-                System.out.println("产品添加成功！");
-            }else{
-                System.out.println("请重新输入！");
-            }
+            executeSql("INSERT INTO bank.financial_products(name,annual_yield) VALUES ('" + name + "','" + annual_yield + "');");
+            System.out.println("产品添加成功！");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -38,12 +35,8 @@ public class FinancialProductManager implements Manager{
         System.out.println("理财产品序号");
         id  = scanner.nextLine();
         try {
-            if (Objects.equals(confirm, id)) {
-                executeSql("delete from bank.financial_products where id = "+id);
-                System.out.println("产品删除成功！");
-            }else{
-                System.out.println("请重新输入！");
-            }
+            executeSql("delete from bank.financial_products where id = "+id);
+            System.out.println("产品删除成功！");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -59,12 +52,8 @@ public class FinancialProductManager implements Manager{
         System.out.println("理财产品年收益");
         annual_yield = scanner.nextLine();
         try {
-            if (Objects.equals(confirm, id)) {
                 executeSql("update bank.financial_products set name = "+name+" annual_yield = "+annual_yield+" where id = "+id);
                 System.out.println("产品修改成功！");
-            }else{
-                System.out.println("请重新输入！");
-            }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -84,12 +73,9 @@ public class FinancialProductManager implements Manager{
                 System.out.println("请输入产品序号");
                 id = scanner.nextLine();
                 try{
-                    if (Objects.equals(confirm, id)) {
-                        executeSql("select * from annual_yield where id = "+id);
-                        System.out.println("产品查找成功！");
-                    }else{
-                        System.out.println("请重新输入！");
-                    }
+                    ResultSet result = queryFinancialProd("id",id);
+                    //todo:输出产品详细信息
+                    System.out.println("产品查找成功！");
                 } catch (ClassNotFoundException | SQLException e) {
                     e.printStackTrace();
                 }
@@ -98,12 +84,8 @@ public class FinancialProductManager implements Manager{
                 System.out.println("请输入产品名称");
                 name = scanner.nextLine();
                 try{
-                    if (Objects.equals(confirm, name)) {
-                        executeSql("select * from annual_yield where name = "+name);
-                        System.out.println("产品查找成功！");
-                    }else{
-                        System.out.println("请重新输入！");
-                    }
+                    executeSql("select * from bank.financial_products where name = "+name);
+                    System.out.println("产品查找成功！");
                 } catch (ClassNotFoundException | SQLException e) {
                     e.printStackTrace();
                 }
@@ -113,12 +95,8 @@ public class FinancialProductManager implements Manager{
                 System.out.println("请输入产品年收益");
                 annual_yield = scanner.nextLine();
                 try{
-                    if (Objects.equals(confirm, annual_yield)) {
-                        executeSql("select * from annual_yield where annual_yield = "+annual_yield);
-                        System.out.println("产品查找成功！");
-                    }else{
-                        System.out.println("请重新输入！");
-                    }
+                    executeSql("select * from bank.financial_products where annual_yield = "+annual_yield);
+                    System.out.println("产品查找成功！");
                 } catch (ClassNotFoundException | SQLException e) {
                     e.printStackTrace();
                 }
