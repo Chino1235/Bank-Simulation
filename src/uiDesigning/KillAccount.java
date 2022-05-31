@@ -61,9 +61,9 @@ public class KillAccount {
             String accountt= account.getText();
             String name = clientName.getText();
             String passwd=password.getText();
-            double profile=queryProfile(accountt);
-//todo:查询账号是否存在，若不存在弹窗提示（弹窗我来写）
             try {
+                double profile=queryProfile(accountt);
+//todo:查询账号是否存在，若不存在弹窗提示（弹窗我来写）
                 if(!accountExist(accountt)){
                     JOptionPane.showMessageDialog(null,"账号已注册","错误",JOptionPane.ERROR_MESSAGE);
                 }
@@ -82,7 +82,7 @@ public class KillAccount {
                     JOptionPane.showMessageDialog(null,"姓名不正确","错误",JOptionPane.ERROR_MESSAGE);
                 }
 //ToDo：执行数据库删除操作
-                executeSql("insert into bank.client(account,name,password) value ('"+accountt+"','"+name+"','"+passwd+"');");
+                executeSql("delete from bank.client where account='"+accountt+"';");
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             } catch (SQLException ex) {
