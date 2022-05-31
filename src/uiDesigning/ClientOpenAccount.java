@@ -5,6 +5,11 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
+import java.util.Objects;
+
+import static banksimulate.SqlOptions.accountExist;
+import static banksimulate.SqlOptions.executeSql;
 
 public class ClientOpenAccount {
     Label name = new Label("姓名：");
@@ -66,8 +71,24 @@ public class ClientOpenAccount {
             String accoun = account.getText();
             String passwd = password.getText();
             //todo:判断确认密码是否正确，若错误弹出
+            String passwd1 = confirmpassword.getText();
+            if(!Objects.equals(passwd, passwd1)){
+                JOptionPane.showMessageDialog(null,"两次密码输入不一致","错误",JOptionPane.ERROR_MESSAGE);
+
+            }
             //JOptionPane.showMessageDialog(null,"两次密码输入不一致","错误",JOptionPane.ERROR_MESSAGE);
             //todo:判断账号是否已注册，若已注册弹出
+            try {
+                if(!accountExist(accoun)){
+                    JOptionPane.showMessageDialog(null,"账号已注册","错误",JOptionPane.ERROR_MESSAGE);
+                }
+                executeSql("insert into bank.client(account,name,password) value ('"+accoun+"','"+name+"','"+passwd+"');");
+
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
             //JOptionPane.showMessageDialog(null,"账号已注册","错误",JOptionPane.ERROR_MESSAGE);
             //todo：执行数据库插入操作
         });
