@@ -79,8 +79,10 @@ public class ClientLoanForm {
                 double finalProfile = currentProfile + profile;
                 executeSql("UPDATE bank.client SET profile='"+finalProfile+"' where account='"+acctxt.getText()+"';");
             } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
                 JOptionPane.showMessageDialog(null,"ÏµÍ³´íÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
             } catch (SQLException ex) {
+                ex.printStackTrace();
                 JOptionPane.showMessageDialog(null,"SQL´íÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
             }
         });
