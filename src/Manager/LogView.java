@@ -35,7 +35,7 @@ public class LogView {
                 //获取profile这列数据
                 profile = rs.getString("profile");
                 //获取option这列数据
-                option = rs.getString("profile");
+                option = rs.getString("option");
                 //输出结果
                 System.out.println(profile + "\t" + account + "\t" + option + "\t");
             }
