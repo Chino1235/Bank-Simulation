@@ -81,8 +81,12 @@ public class SqlOptions {
         conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
         stat =conn.createStatement();
         resultSet = stat.executeQuery(sql);
+        if(resultSet == null){
+            JOptionPane.showMessageDialog(null,"找不到该用户","错误",JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
         resultSet.next();
-        String name = resultSet.getString("password");
+        String name = resultSet.getString("name");
         stat.close();
         conn.close();
         return name;
