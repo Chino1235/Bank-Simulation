@@ -16,14 +16,14 @@ public class FinancialProductManager implements Manager{
 
     @Override
     public void add() {
-        System.out.println("å¢æ·»");
-        System.out.println("ç†è´¢äº§å“åç§°ï¼š");
+        System.out.println("ÔöÌí");
+        System.out.println("Àí²Æ²úÆ·Ãû³Æ£º");
         name = scanner.nextLine();
-        System.out.println("ç†è´¢äº§å“å¹´æ”¶ç›Šï¼š");
+        System.out.println("Àí²Æ²úÆ·ÄêÊÕÒæ£º");
         annual_yield = scanner.nextLine();
         try {
             executeSql("INSERT INTO bank.financial_products(name,annual_yield) VALUES ('" + name + "','" + annual_yield + "');");
-            System.out.println("äº§å“æ·»åŠ æˆåŠŸï¼");
+            System.out.println("²úÆ·Ìí¼Ó³É¹¦£¡");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -31,12 +31,12 @@ public class FinancialProductManager implements Manager{
 
     @Override
     public void delete() {
-        System.out.println("åˆ é™¤");
-        System.out.println("ç†è´¢äº§å“åºå·");
+        System.out.println("É¾³ı");
+        System.out.println("Àí²Æ²úÆ·ĞòºÅ");
         id  = scanner.nextLine();
         try {
             executeSql("delete from bank.financial_products where id = "+id);
-            System.out.println("äº§å“åˆ é™¤æˆåŠŸï¼");
+            System.out.println("²úÆ·É¾³ı³É¹¦£¡");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -44,16 +44,16 @@ public class FinancialProductManager implements Manager{
 
     @Override
     public void change() {
-        System.out.println("ä¿®æ”¹");
-        System.out.println("ç†è´¢äº§å“åºå·");
+        System.out.println("ĞŞ¸Ä");
+        System.out.println("Àí²Æ²úÆ·ĞòºÅ");
         id  = scanner.nextLine();
-        System.out.println("äº§å“åç§°");
+        System.out.println("²úÆ·Ãû³Æ");
         name = scanner.nextLine();
-        System.out.println("ç†è´¢äº§å“å¹´æ”¶ç›Š");
+        System.out.println("Àí²Æ²úÆ·ÄêÊÕÒæ");
         annual_yield = scanner.nextLine();
         try {
                 executeSql("update bank.financial_products set name = "+name+" annual_yield = "+annual_yield+" where id = "+id);
-                System.out.println("äº§å“ä¿®æ”¹æˆåŠŸï¼");
+                System.out.println("²úÆ·ĞŞ¸Ä³É¹¦£¡");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -62,59 +62,59 @@ public class FinancialProductManager implements Manager{
 
     @Override
     public void query() {
-        System.out.println("æŸ¥æ‰¾");
-        System.out.println("1æŒ‰äº§å“åºå·æŸ¥æ‰¾è¾“å…¥1");
-        System.out.println("2æŒ‰äº§å“åç§°æŸ¥æ‰¾è¾“å…¥2");
-        System.out.println("3æŒ‰äº§å“å¹´æ”¶ç›ŠæŸ¥æ‰¾è¾“å…¥3");
+        System.out.println("²éÕÒ");
+        System.out.println("1°´²úÆ·ĞòºÅ²éÕÒÊäÈë1");
+        System.out.println("2°´²úÆ·Ãû³Æ²éÕÒÊäÈë2");
+        System.out.println("3°´²úÆ·ÄêÊÕÒæ²éÕÒÊäÈë3");
 
         int a = Integer.parseInt(scanner.nextLine());
         switch(a){
             case 1:
-                System.out.println("è¯·è¾“å…¥äº§å“åºå·");
+                System.out.println("ÇëÊäÈë²úÆ·ĞòºÅ");
                 id = scanner.nextLine();
                 try{
                     ResultSet result = queryFinancialProd("id",id);
-                    //todo:è¾“å‡ºäº§å“è¯¦ç»†ä¿¡æ¯
-                    System.out.println("äº§å“æŸ¥æ‰¾æˆåŠŸï¼");
+                    //todo:Êä³ö²úÆ·ÏêÏ¸ĞÅÏ¢
+                    System.out.println("²úÆ·²éÕÒ³É¹¦£¡");
                 } catch (ClassNotFoundException | SQLException e) {
                     e.printStackTrace();
                 }
                 break;
             case 2:
-                System.out.println("è¯·è¾“å…¥äº§å“åç§°");
+                System.out.println("ÇëÊäÈë²úÆ·Ãû³Æ");
                 name = scanner.nextLine();
                 try{
                     executeSql("select * from bank.financial_products where name = "+name);
-                    System.out.println("äº§å“æŸ¥æ‰¾æˆåŠŸï¼");
+                    System.out.println("²úÆ·²éÕÒ³É¹¦£¡");
                 } catch (ClassNotFoundException | SQLException e) {
                     e.printStackTrace();
                 }
 
                 break;
             case 3:
-                System.out.println("è¯·è¾“å…¥äº§å“å¹´æ”¶ç›Š");
+                System.out.println("ÇëÊäÈë²úÆ·ÄêÊÕÒæ");
                 annual_yield = scanner.nextLine();
                 try{
                     executeSql("select * from bank.financial_products where annual_yield = "+annual_yield);
-                    System.out.println("äº§å“æŸ¥æ‰¾æˆåŠŸï¼");
+                    System.out.println("²úÆ·²éÕÒ³É¹¦£¡");
                 } catch (ClassNotFoundException | SQLException e) {
                     e.printStackTrace();
                 }
                 break;
             default:
-                System.out.println("éæ³•è¾“å…¥");
+                System.out.println("·Ç·¨ÊäÈë");
                 break;
         }
     }
 
     public static void menu(){
-        System.out.println("æ‚¨å·²è¿›å…¥ç†è´¢äº§å“ä¿¡æ¯ç®¡ç†ç³»ç»Ÿ");
-        System.out.println("è¯·è°¨æ…æ“ä½œ");
-        System.out.println("è¯·é€‰æ‹©æ‚¨éœ€è¦çš„æ“ä½œ");
-        System.out.println("1.æ·»åŠ ç†è´¢äº§å“");
-        System.out.println("2.åˆ é™¤ç†è´¢äº§å“");
-        System.out.println("3.ä¿®æ”¹ç†è´¢äº§å“");
-        System.out.println("4.æŸ¥è¯¢ç†è´¢äº§å“");
-        System.out.println("0.é€€å‡ºç³»ç»Ÿ");
+        System.out.println("ÄúÒÑ½øÈëÀí²Æ²úÆ·ĞÅÏ¢¹ÜÀíÏµÍ³");
+        System.out.println("Çë½÷É÷²Ù×÷");
+        System.out.println("ÇëÑ¡ÔñÄúĞèÒªµÄ²Ù×÷");
+        System.out.println("1.Ìí¼ÓÀí²Æ²úÆ·");
+        System.out.println("2.É¾³ıÀí²Æ²úÆ·");
+        System.out.println("3.ĞŞ¸ÄÀí²Æ²úÆ·");
+        System.out.println("4.²éÑ¯Àí²Æ²úÆ·");
+        System.out.println("0.ÍË³öÏµÍ³");
     }
 }

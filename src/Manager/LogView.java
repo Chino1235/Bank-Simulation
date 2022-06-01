@@ -16,13 +16,13 @@ public class LogView {
 
 
         try {
-            //è¦æ‰§è¡Œçš„SQLè¯­å¥
-            //3.ResultSetç±»ï¼Œç”¨æ¥å­˜æ”¾è·å–çš„ç»“æœé›†ï¼ï¼
+            //ÒªÖ´ĞĞµÄSQLÓï¾ä
+            //3.ResultSetÀà£¬ÓÃÀ´´æ·Å»ñÈ¡µÄ½á¹û¼¯£¡£¡
             ResultSet rs = queryAllLog();
             System.out.println("-----------------");
-            System.out.println("æ‰§è¡Œç»“æœå¦‚ä¸‹æ‰€ç¤º:");
+            System.out.println("Ö´ĞĞ½á¹ûÈçÏÂËùÊ¾:");
             System.out.println("-----------------");
-            System.out.println("è´¦æˆ·" + "\t" + "é‡‘é¢" + "\t" + "æ“ä½œ" + "\t");
+            System.out.println("ÕË»§" + "\t" + "½ğ¶î" + "\t" + "²Ù×÷" + "\t");
             System.out.println("-----------------");
 
             String account = null;
@@ -30,26 +30,26 @@ public class LogView {
             String option = null;
 
             while (rs.next()) {
-                //è·å–accountè¿™åˆ—æ•°æ®
+                //»ñÈ¡accountÕâÁĞÊı¾İ
                 account = rs.getString("account");
-                //è·å–profileè¿™åˆ—æ•°æ®
+                //»ñÈ¡profileÕâÁĞÊı¾İ
                 profile = rs.getString("profile");
-                //è·å–optionè¿™åˆ—æ•°æ®
+                //»ñÈ¡optionÕâÁĞÊı¾İ
                 option = rs.getString("option");
-                //è¾“å‡ºç»“æœ
+                //Êä³ö½á¹û
                 System.out.println(profile + "\t" + account + "\t" + option + "\t");
             }
             rs.close();
         } catch (ClassNotFoundException e) {
-            //æ•°æ®åº“é©±åŠ¨ç±»å¼‚å¸¸å¤„ç†
+            //Êı¾İ¿âÇı¶¯ÀàÒì³£´¦Àí
             System.out.println("Sorry,can`t find the Driver!");
             e.printStackTrace();
         } catch (Exception e) {
-            //æ•°æ®åº“è¿æ¥å¤±è´¥å¼‚å¸¸å¤„ç†
+            //Êı¾İ¿âÁ¬½ÓÊ§°ÜÒì³£´¦Àí
             e.printStackTrace();
         }
         finally {
-            System.out.println("æ•°æ®åº“æ•°æ®æˆåŠŸè·å–ï¼ï¼");
+            System.out.println("Êı¾İ¿âÊı¾İ³É¹¦»ñÈ¡£¡£¡");
         }
     }
 

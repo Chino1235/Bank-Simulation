@@ -1,11 +1,13 @@
 package Manager;
 
+import javax.swing.*;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Scanner;
 
-import static banksimulate.SqlOptions.executeSql;
+import static banksimulate.SqlOptions.*;
 
 public class ClientManager implements Manager{
 
@@ -16,20 +18,20 @@ public class ClientManager implements Manager{
     Scanner sc = new Scanner(System.in);
     @Override
     public void add()  {
-        System.out.println("è¯·è¾“å…¥ä½ çš„åå­—ï¼š");
+        System.out.println("ÇëÊäÈëÄãµÄÃû×Ö£º");
         name = sc.nextLine();
-        System.out.println("è¯·è¾“å…¥ä½ çš„è´¦æˆ·ï¼š");
+        System.out.println("ÇëÊäÈëÄãµÄÕË»§£º");
         account = sc.nextLine();
-        System.out.println("è¯·è¾“å…¥ä½ çš„å¯†ç ï¼š");
+        System.out.println("ÇëÊäÈëÄãµÄÃÜÂë£º");
         password = sc.nextLine();
-        System.out.println("è¯·å†æ¬¡ç¡®è®¤å¯†ç ï¼šï¼š");
+        System.out.println("ÇëÔÙ´ÎÈ·ÈÏÃÜÂë£º£º");
         confirm = sc.nextLine();
         try {
             if(Objects.equals(confirm, password)){
                 executeSql("INSERT INTO bank.client(account,name,password) VALUES ('"+account+"','"+name+"','"+password+"');");
-                System.out.println("ç”¨æˆ·æ·»åŠ æˆåŠŸï¼");
+                System.out.println("ÓÃ»§Ìí¼Ó³É¹¦£¡");
             }else{
-                System.out.print("ä¸¤æ¬¡å¯†ç ä¸ä¸€è‡´ï¼Œè¯·é‡æ–°è¾“å…¥æ‰€æœ‰ä¿¡æ¯ï¼");
+                System.out.print("Á½´ÎÃÜÂë²»Ò»ÖÂ£¬ÇëÖØĞÂÊäÈëËùÓĞĞÅÏ¢£¡");
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -38,98 +40,127 @@ public class ClientManager implements Manager{
 
     @Override
     public void delete() {
-        System.out.println("è¯·è¾“å…¥æƒ³è¦åˆ é™¤çš„è´¦æˆ·");
+        System.out.println("ÇëÊäÈëÏëÒªÉ¾³ıµÄÕË»§");
         account = sc.next();
-        System.out.println("è¯·è¾“å…¥å¯†ç ");
+        System.out.println("ÇëÊäÈëÃÜÂë");
         password = sc.next();
-        System.out.println("ç¡®å®šè¦æ³¨é”€è´¦æˆ·å—ï¼Ÿ");
+        System.out.println("È·¶¨Òª×¢ÏúÕË»§Âğ£¿");
         String answer = sc.next();
         if (answer.equals("y")) {
-            String sql = "delete from account where name = ? and password= ?";
-            boolean preparedStatement;
+            String sql = "delete from bank.client where account = '" + account + "';";
             try {
-                Connection connection;
-                preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setString(1, account);
-                preparedStatement.setString(2, password);
-                int i = preparedStatement.executeUpdate();
-                if (i > 0) {
-                    System.out.println("åˆ é™¤æˆåŠŸï¼");
-                } else {
-                    System.out.println("åˆ é™¤å¤±è´¥ï¼");
-                }
-            } catch (SQLException e) {
+                executeSql(sql);
+                JOptionPane.showMessageDialog(null, "É¾³ı³É¹¦", "ĞÅÏ¢", JOptionPane.INFORMATION_MESSAGE);
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
-            } finally {
-                try {
-                    if (resultSet != null) {
-                        resultSet.close();
-                    }
-                    if (preparedStatement != null) {
-                        preparedStatement.close();
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+                JOptionPane.showMessageDialog(null, "ÏµÍ³´íÎó", "ĞÅÏ¢", JOptionPane.ERROR_MESSAGE);
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Êı¾İ¿â´íÎó", "ĞÅÏ¢", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
             }
-        } else {
-            System.out.println("é€€å‡ºåˆ é™¤ç”¨æˆ·");
         }
-
-
     }
 
     @Override
     public void change() {
 
-        System.out.println("è¯·è¾“å…¥ä½ è¦ä¿®æ”¹çš„è´¦æˆ·ï¼š");
+        System.out.println("ÇëÊäÈëÄãÒªĞŞ¸ÄµÄÕË»§£º");
         account = sc.nextLine();
-        boolean bo=false;
-        //éå†é›†åˆ
-        while(sc.next()) {
-            //æ‹¿è¾“å…¥çš„è´¦æˆ·å’Œæ•°æ®åº“çš„è´¦æˆ·è¿›è¡Œæ¯”è¾ƒ
-            if(sc.getString("account:").equals(account)) {
-                bo=true;
-                break;
+        try {
+            String sql ="select * from bank.client where account = '"+account+"';";
+            ResultSet result = queryClient("account",account);
+            if(result == null){
+                System.out.println("ÕË»§´íÎó£¬ÇëÖØĞÂÊäÈë");
+                return;
             }
-        }
 
-        if(bo == false) {
-            System.out.println("ä¸å¥½æ„æ€,ä½ è¦ä¿®æ”¹çš„è´¦æˆ·å¯¹åº”çš„ç”¨æˆ·ä¿¡æ¯ä¸å­˜åœ¨,è¯·å›å»é‡æ–°ä½ çš„é€‰æ‹©");
-        }else {
-            System.out.println("è¯·è¾“å…¥è¦æ›´æ–°çš„é€‰é¡¹");
-            System.out.println("1   å§“å");
-            int n;
-            n=sc.nextInt();
-            if(n==1) {
-                System.out.println("è¯·è¾“å…¥ç”¨æˆ·çš„æ–°å§“åï¼š");
-                String name = sc.next();
-                String insertsql2 ="update List set name = '"+name+"'"; //æ›´æ–°è¯­å¥
-                state.executeUpdate(insertsql2);
-            }else {
-                System.out.println("è¾“å…¥æ ¼å¼é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥");
-            }
-            System.out.println("ä¿®æ”¹å­¦ç”ŸæˆåŠŸ");
+            System.out.println("ÇëÊäÈëĞÂµÄÓÃ»§Ãû£º");
+            name = sc.nextLine();
+            System.out.println("ÇëÊäÈëĞÂµÄÃÜÂë£º");
+            password = sc.nextLine();
+            sql ="update bank.client set name ='"+name+"',password ='"+password+"' where account ='"+account+"';";
+            executeSql(sql);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "ÏµÍ³´íÎó", "ĞÅÏ¢", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Êı¾İ¿â´íÎó", "ĞÅÏ¢", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
-
     }
 
 
     @Override
     public void query() {
-        System.out.println("è¯·è¾“å…¥è¦æŸ¥è¯¢çš„è´¦æˆ·");
-        account = sc.nextInt();
-       
+        System.out.println("ÇëÑ¡ÔñÄúÒª²éÑ¯µÄ·½Ê½£º£¨1£©ÓÃ»§Ãû£¨2£©ÕË»§");
+        int number = sc.nextInt();
+        if(number == 1){
+            System.out.println("ÇëÊäÈëÄúÏëÒª²éÑ¯µÄÓÃ»§Ãû£º");
+            name = sc.nextLine();
+            try {
+                ResultSet result = queryClient("name",name);
+                //»ñÈ¡accountÕâÁĞÊı¾İ
+                String name = null;
+                String account = null;
+                double profile = 0;
+                System.out.println("ĞÕÃû\tÕËºÅ\t\t\t\t\tÓà¶î\t");
+                while (result.next()) {
+                    //»ñÈ¡accountÕâÁĞÊı¾İ
+                    account = result.getString("account");
+                    //»ñÈ¡profileÕâÁĞÊı¾İ
+                    profile = result.getDouble("profile");
+                    //»ñÈ¡optionÕâÁĞÊı¾İ
+                    name = result.getString("name");
+                    //Êä³ö½á¹û
+                    System.out.println(name + "\t" + account + "\t" + profile + "\t");
+                }
+                result.close();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else if(number ==  2){
+            System.out.println("ÇëÊäÈëÄúÏëÒª²éÑ¯µÄÕËºÅ£º");
+            name = sc.nextLine();
+            try {
+                ResultSet result = queryClient("account",account);
+                //»ñÈ¡accountÕâÁĞÊı¾İ
+                String name = null;
+                String account = null;
+                double profile = 0;
+                System.out.println("ĞÕÃû\tÕËºÅ\t\t\t\t\tÓà¶î\t");
+                while (result.next()) {
+                    //»ñÈ¡accountÕâÁĞÊı¾İ
+                    account = result.getString("account");
+                    //»ñÈ¡profileÕâÁĞÊı¾İ
+                    profile = result.getDouble("profile");
+                    //»ñÈ¡optionÕâÁĞÊı¾İ
+                    name = result.getString("name");
+                    //Êä³ö½á¹û
+                    System.out.println(name + "\t" + account + "\t" + profile + "\t");
+                }
+                result.close();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else{
+            System.out.println("ÇëÊäÈëÕıÈ·µÄÖ¸Áî£¡");
+        }
+
+
     }
 
     public static void menu(){
-        System.out.println("æ‚¨å·²è¿›å…¥å®¢æˆ·ä¿¡æ¯ç®¡ç†ç³»ç»Ÿ");
-        System.out.println("è¯·è°¨æ…æ“ä½œ");
-        System.out.println("è¯·é€‰æ‹©æ‚¨éœ€è¦çš„æ“ä½œ");
-        System.out.println("1.æ·»åŠ å®¢æˆ·");
-        System.out.println("2.åˆ é™¤å®¢æˆ·");
-        System.out.println("3.ä¿®æ”¹å®¢æˆ·");
-        System.out.println("4.æŸ¥è¯¢å®¢æˆ·");
-        System.out.println("0.é€€å‡ºç³»ç»Ÿ");
+        System.out.println("ÄúÒÑ½øÈë¿Í»§ĞÅÏ¢¹ÜÀíÏµÍ³");
+        System.out.println("Çë½÷É÷²Ù×÷");
+        System.out.println("ÇëÑ¡ÔñÄúĞèÒªµÄ²Ù×÷");
+        System.out.println("1.Ìí¼Ó¿Í»§");
+        System.out.println("2.É¾³ı¿Í»§");
+        System.out.println("3.ĞŞ¸Ä¿Í»§");
+        System.out.println("4.²éÑ¯¿Í»§");
+        System.out.println("0.ÍË³öÏµÍ³");
     }
 }

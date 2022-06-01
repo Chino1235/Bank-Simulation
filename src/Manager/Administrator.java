@@ -30,7 +30,7 @@ public class Administrator {
                     clientManager.query();
                     break;
                 default:
-                    System.out.println("éæ³•è¾“å…¥");
+                    System.out.println("·Ç·¨ÊäÈë");
             }
         }
     }
@@ -55,30 +55,30 @@ public class Administrator {
                     financialProductManager.query();
                     break;
                 default:
-                    System.out.println("éæ³•è¾“å…¥");
+                    System.out.println("·Ç·¨ÊäÈë");
             }
         }
     }
 
     public static void menu(){
-        System.out.println("è¯·é€‰æ‹©æ“ä½œï¼š");
-        System.out.println("1.å®¢æˆ·ä¿¡æ¯ç®¡ç†");
-        System.out.println("2.ç†è´¢ä¿¡æ¯ç®¡ç†");
-        System.out.println("3.é“¶è¡Œæµæ°´æŸ¥çœ‹");
-        System.out.println("4.é”€æˆ·");
-        System.out.println("0.é€€å‡ºç³»ç»Ÿ");
+        System.out.println("ÇëÑ¡Ôñ²Ù×÷£º");
+        System.out.println("1.¿Í»§ĞÅÏ¢¹ÜÀí");
+        System.out.println("2.Àí²ÆĞÅÏ¢¹ÜÀí");
+        System.out.println("3.ÒøĞĞÁ÷Ë®²é¿´");
+        System.out.println("4.Ïú»§");
+        System.out.println("0.ÍË³öÏµÍ³");
     }
 
     public static boolean adminLogin(){
-        //todo:æ— éœ€è®¿é—®æ•°æ®åº“
+        //todo:ÎŞĞè·ÃÎÊÊı¾İ¿â
         String name;
         String name1 = "root";
         String password;
         String password1 = "root";
         Scanner sc = new Scanner(System.in);
-        System.out.println("è¯·è¾“å…¥ç®¡ç†å‘˜è´¦å·ï¼š");
+        System.out.println("ÇëÊäÈë¹ÜÀíÔ±ÕËºÅ£º");
         name = sc.nextLine();
-        System.out.println("è¯·è¾“å…¥å¯†ç ï¼š");
+        System.out.println("ÇëÊäÈëÃÜÂë£º");
         password = sc.nextLine();
 
         if (name.equals(name1)) {
@@ -93,7 +93,7 @@ public class Administrator {
     }
 
     public static void main(String[] args) {
-        System.out.println("æ¬¢è¿ä½¿ç”¨æ‘é•‡é“¶è¡Œç®¡ç†ç«¯ï¼Œè¯·å…ˆç™»å½•");
+        System.out.println("»¶Ó­Ê¹ÓÃ´åÕòÒøĞĞ¹ÜÀí¶Ë£¬ÇëÏÈµÇÂ¼");
         if(adminLogin()){
             int option =1;
             while(option != 0){
@@ -112,7 +112,7 @@ public class Administrator {
                     case 4:
                         new KillAccount();
                     default:
-                        System.out.println("éæ³•è¾“å…¥");
+                        System.out.println("·Ç·¨ÊäÈë");
                         break;
                 }
             }
