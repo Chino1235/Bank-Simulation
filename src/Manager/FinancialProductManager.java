@@ -72,10 +72,21 @@ public class FinancialProductManager implements Manager{
             case 1:
                 System.out.println("请输入产品序号");
                 id = scanner.nextLine();
-                try{
-                    ResultSet result = queryFinancialProd("id",id);
-                    //todo:输出产品详细信息
-                    System.out.println("产品查找成功！");
+                try {
+                    ResultSet result = queryFinancialProd("id", id);
+
+                    int id = 0;
+                    String name = null;
+                    double annual_yield = 0;
+                    while (result.next()) {
+                        id = result.getInt("id");
+                        name = result.getString("name");
+                        annual_yield = result.getDouble("annual_yield");
+                        System.out.println("产品查找成功！\t");
+                        System.out.println(id + "\t" + name + "\t" + annual_yield + "\t");
+                        //todo:输出产品详细信息
+                    }
+                    result.close();
                 } catch (ClassNotFoundException | SQLException e) {
                     e.printStackTrace();
                 }
@@ -84,8 +95,20 @@ public class FinancialProductManager implements Manager{
                 System.out.println("请输入产品名称");
                 name = scanner.nextLine();
                 try{
-                    executeSql("select * from bank.financial_products where name = "+name);
-                    System.out.println("产品查找成功！");
+                    ResultSet result = queryFinancialProd("name",name);
+
+                    int id = 0;
+                    String name = null;
+                    double annual_yield = 0;
+                    while (result.next()) {
+                        id = result.getInt("id");
+                        name = result.getString("name");
+                        annual_yield = result.getDouble("annual_yield");
+                        System.out.println("产品查找成功！\t");
+                        System.out.println(id + "\t" + name + "\t" + annual_yield + "\t");
+                        //todo:输出产品详细信息
+                    }
+                    result.close();
                 } catch (ClassNotFoundException | SQLException e) {
                     e.printStackTrace();
                 }
@@ -95,8 +118,20 @@ public class FinancialProductManager implements Manager{
                 System.out.println("请输入产品年收益");
                 annual_yield = scanner.nextLine();
                 try{
-                    executeSql("select * from bank.financial_products where annual_yield = "+annual_yield);
-                    System.out.println("产品查找成功！");
+                    ResultSet result = queryFinancialProd("annual_yield", annual_yield);
+
+                    int id = 0;
+                    String name = null;
+                    double annual_yield = 0;
+                    while (result.next()) {
+                        id = result.getInt("id");
+                        name = result.getString("name");
+                        annual_yield = result.getDouble("annual_yield");
+                        System.out.println("产品查找成功！\t");
+                        System.out.println(id + "\t" + name + "\t" + annual_yield + "\t");
+                        //todo:输出产品详细信息
+                    }
+                    result.close();
                 } catch (ClassNotFoundException | SQLException e) {
                     e.printStackTrace();
                 }

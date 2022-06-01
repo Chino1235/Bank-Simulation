@@ -115,9 +115,7 @@ public class ClientManager implements Manager{
                     System.out.println(name + "\t" + account + "\t" + profile + "\t");
                 }
                 result.close();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
+            } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             }
         }else if(number ==  2){
@@ -141,9 +139,7 @@ public class ClientManager implements Manager{
                     System.out.println(name + "\t" + account + "\t" + profile + "\t");
                 }
                 result.close();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
+            } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             }
         }else{
