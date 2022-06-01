@@ -160,4 +160,18 @@ public class SqlOptions {
         return resultSet;
     }
 
+    public static ResultSet queryClient(String column,String value) throws ClassNotFoundException,SQLException {
+        Connection conn = null;
+        Statement stat = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT * from bank.client where "+column+"='"+value+"';";
+        Class.forName(DBDRIVER);
+        conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
+        stat =conn.createStatement();
+        resultSet = stat.executeQuery(sql);
+        stat.close();
+        conn.close();
+        return resultSet;
+    }
+
 }
