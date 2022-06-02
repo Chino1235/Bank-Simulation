@@ -30,6 +30,7 @@ public class KillAccount {
     Frame mainFrame = new Frame();
 
     public KillAccount(){
+        mainFrame.setLayout(new GridLayout(4,1));
         mainFrame.add(p0);
         p0.setLayout(new BorderLayout());
         p0.add(name,BorderLayout.WEST);
@@ -48,7 +49,7 @@ public class KillAccount {
 
         mainFrame.add(p4);
         p4.add(submit);
-
+        mainFrame.setSize(300,300);
         mainFrame.setVisible(true);
         mainFrame.addWindowListener(new WindowAdapter() {
             @Override
