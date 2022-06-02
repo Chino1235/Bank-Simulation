@@ -11,12 +11,6 @@ import java.util.SplittableRandom;
 import static org.junit.Assert.*;
 
 public class MakeLoanTest {
-    public static void main(String[] args){
-        MakeLoan makeLoan1 = new MakeLoan();
-        Scanner scanner = new Scanner(System.in);
-
-    }
-
 
     MakeLoan makeLoan = new MakeLoan();
 
