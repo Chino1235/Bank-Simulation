@@ -84,9 +84,11 @@ public class KillAccount {
                 }
 //ToDo：执行数据库删除操作
                 executeSql("delete from bank.client where account='"+accountt+"';");
+                JOptionPane.showMessageDialog(null,"销户成功","信息",JOptionPane.INFORMATION_MESSAGE);
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,"您输入的信息有误","错误",JOptionPane.ERROR_MESSAGE);
                 ex.printStackTrace();
             }
         });
