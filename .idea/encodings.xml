@@ -27,5 +27,6 @@
     <file url="file://$PROJECT_DIR$/src/uiDesigning/FinancialProdForm.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/uiDesigning/TransferForm.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/uiDesigning/WithdrawAppointment.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/test/banksimulate/MakeLoanTest.java" charset="GBK" />
   </component>
 </project>
