@@ -78,6 +78,7 @@ public class ClientLoanForm {
                 double currentProfile = queryProfile(acctxt.getText());
                 double finalProfile = currentProfile + profile;
                 executeSql("UPDATE bank.client SET profile='"+finalProfile+"' where account='"+acctxt.getText()+"';");
+                JOptionPane.showMessageDialog(null,"成功","信息",JOptionPane.INFORMATION_MESSAGE);
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(null,"系统错误","错误",JOptionPane.ERROR_MESSAGE);
