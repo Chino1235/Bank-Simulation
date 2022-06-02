@@ -109,6 +109,7 @@ public class Administrator {
                         break;
                     case 4:
                         new KillAccount();
+                        break;
                     default:
                         System.out.println("∑«∑® ‰»Î");
                         break;
