@@ -81,7 +81,7 @@ public class ClientLoginForm {
             }
         });
 
-
+        openacc.addActionListener(e -> new ClientOpenAccount());
     }
 
     public static void main(String[] args) {

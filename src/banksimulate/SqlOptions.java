@@ -107,9 +107,10 @@ public class SqlOptions {
         conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
         stat =conn.createStatement();
         resultSet = stat.executeQuery(sql);
+        boolean result = resultSet.next();
         stat.close();
         conn.close();
-        return resultSet.next();
+        return result;
 
         /*} catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null,"系统错误","错误",JOptionPane.ERROR_MESSAGE);
@@ -127,8 +128,6 @@ public class SqlOptions {
         conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
         stat =conn.createStatement();
         resultSet = stat.executeQuery(sql);
-        stat.close();
-        conn.close();
         return resultSet;
     }
 
@@ -141,8 +140,6 @@ public class SqlOptions {
         conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
         stat =conn.createStatement();
         resultSet = stat.executeQuery(sql);
-        stat.close();
-        conn.close();
         return resultSet;
     }
 
@@ -155,8 +152,6 @@ public class SqlOptions {
         conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
         stat =conn.createStatement();
         resultSet = stat.executeQuery(sql);
-        stat.close();
-        conn.close();
         return resultSet;
     }
 
@@ -169,8 +164,6 @@ public class SqlOptions {
         conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
         stat =conn.createStatement();
         resultSet = stat.executeQuery(sql);
-        stat.close();
-        conn.close();
         return resultSet;
     }
 
