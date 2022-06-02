@@ -14,7 +14,7 @@ public class Administrator {
         ClientManager clientManager = new ClientManager();
         int option = 1;
         while(option != 0){
-            menu();
+            ClientManager.menu();
             option = sc.nextInt();
             switch(option){
                 case 1:
@@ -39,7 +39,7 @@ public class Administrator {
         FinancialProductManager financialProductManager = new FinancialProductManager();
         int option = 1;
         while(option != 0){
-            menu();
+            FinancialProductManager.menu();
             option = sc.nextInt();
             switch(option){
                 case 1:
