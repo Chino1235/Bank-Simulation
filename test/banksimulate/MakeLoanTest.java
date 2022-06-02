@@ -1,20 +1,46 @@
 package banksimulate;
 
-import java.util.Scanner;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-public class MakeLoan {
-    public static void Loan(){
+import java.util.Random;
+import java.util.Scanner;
+import java.util.SplittableRandom;
+
+import static org.junit.Assert.*;
+
+public class MakeLoanTest {
+
+    MakeLoan makeLoan = new MakeLoan();
+
+    @Before
+    public void setUp() throws Exception {
+        new MakeLoan();
+
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        assertEquals(1,1);
+    }
+
+    @Test
+    public void loan() {
+        Random r = new Random();
+
         System.out.println("请输入贷款本金：");
-        Scanner input=new Scanner(System.in);
-        double invest = input.nextDouble();     //贷款本金
+
+
+        double invest = r.nextInt(10)+10;    //贷款本金
 
         System.out.println("请输入年利率：(例如：5.25%就是0.0525)");
-        double yearRate = input.nextDouble();     //年利率
+        double yearRate = r.nextInt(10)+10;      //年利率
 
         double monthRate = yearRate/12;   //月利率
         System.out.println("请输入借款月数：(例如：30年就是360)");
 
-        int month = input.nextInt();  //还款月数
+        int month = r.nextInt(10)+10;   //还款月数
 
         System.out.println("本金-->"+invest+"   年利率--->"+yearRate*100+"%"+"  期限--->"+month+"个月");
         System.out.println("--------------------------------------------");
@@ -66,21 +92,15 @@ public class MakeLoan {
         System.out.println("每月还款本息金额 : " + result+" 元");
     }
 
-    /**
-     * 获取每月本息金额
-     * 计算方式
-     * 每月本息金额  = (本金×月利率×(1＋月利率)＾还款月数)÷ ((1＋月利率)＾还款月数-1))
-     * @param invest  本金
-     * @param yearRate 年利率
-     * @param month   还款月
-     * @return  每月本息金额
-     */
-    public double getMonthIncome(double invest, double yearRate,int month){
-        double monthRate = yearRate/12;   //月利率
-        return (invest* monthRate * Math.pow(1+monthRate,month))/(Math.pow(1+monthRate,month)-1);
+
+    @Test
+    public void getMonthIncome(){
+        double invest = 10000;
+        double yearRate = 0.0525;
+        double monthRate = yearRate/12;
+        int month = 12;
+        float result = (float) makeLoan.getMonthIncome(10000, 0.525, 12);
+        assertEquals(1088.8342,result,0.0001);
+
     }
-
-
 }
-
-
