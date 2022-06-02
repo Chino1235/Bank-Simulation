@@ -12,17 +12,17 @@ import static banksimulate.SqlOptions.accountExist;
 import static banksimulate.SqlOptions.executeSql;
 
 public class ClientOpenAccount {
-    Label name = new Label("å§“åï¼š");
-    Label acc = new Label("è´¦å·ï¼š");
-    Label pass = new Label("å¯†ç ï¼š");
-    Label confirm = new Label("ç¡®è®¤å¯†ç ï¼š");
+    Label name = new Label("ĞÕÃû£º");
+    Label acc = new Label("ÕËºÅ£º");
+    Label pass = new Label("ÃÜÂë£º");
+    Label confirm = new Label("È·ÈÏÃÜÂë£º");
 
     TextField clientName = new TextField();
     TextField account = new TextField();
     TextField password = new TextField();
     TextField confirmpassword = new TextField();
 
-    Button submit = new Button("æäº¤");
+    Button submit = new Button("Ìá½»");
 
     Panel p0 = new Panel();
     Panel p1 = new Panel();
@@ -33,6 +33,8 @@ public class ClientOpenAccount {
     Frame mainFrame = new Frame();
 
     public ClientOpenAccount(){
+        mainFrame.setLayout(new GridLayout(5,1));
+
         mainFrame.add(p0);
         p0.setLayout(new BorderLayout());
         p0.add(name,BorderLayout.WEST);
@@ -58,6 +60,8 @@ public class ClientOpenAccount {
         mainFrame.add(p4);
         p4.add(submit);
 
+        mainFrame.setSize(300,300);
+        mainFrame.setTitle("¿ª»§");
         mainFrame.setVisible(true);
         mainFrame.addWindowListener(new WindowAdapter() {
             @Override
@@ -70,27 +74,28 @@ public class ClientOpenAccount {
             String name = clientName.getText();
             String accoun = account.getText();
             String passwd = password.getText();
-            //todo:åˆ¤æ–­ç¡®è®¤å¯†ç æ˜¯å¦æ­£ç¡®ï¼Œè‹¥é”™è¯¯å¼¹å‡º
+            //todo:ÅĞ¶ÏÈ·ÈÏÃÜÂëÊÇ·ñÕıÈ·£¬Èô´íÎóµ¯³ö
             String passwd1 = confirmpassword.getText();
             if(!Objects.equals(passwd, passwd1)){
-                JOptionPane.showMessageDialog(null,"ä¸¤æ¬¡å¯†ç è¾“å…¥ä¸ä¸€è‡´","é”™è¯¯",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Á½´ÎÃÜÂëÊäÈë²»Ò»ÖÂ","´íÎó",JOptionPane.ERROR_MESSAGE);
 
             }
-            //JOptionPane.showMessageDialog(null,"ä¸¤æ¬¡å¯†ç è¾“å…¥ä¸ä¸€è‡´","é”™è¯¯",JOptionPane.ERROR_MESSAGE);
-            //todo:åˆ¤æ–­è´¦å·æ˜¯å¦å·²æ³¨å†Œï¼Œè‹¥å·²æ³¨å†Œå¼¹å‡º
+            //JOptionPane.showMessageDialog(null,"Á½´ÎÃÜÂëÊäÈë²»Ò»ÖÂ","´íÎó",JOptionPane.ERROR_MESSAGE);
+            //todo:ÅĞ¶ÏÕËºÅÊÇ·ñÒÑ×¢²á£¬ÈôÒÑ×¢²áµ¯³ö
             try {
                 if(!accountExist(accoun)){
-                    JOptionPane.showMessageDialog(null,"è´¦å·å·²æ³¨å†Œ","é”™è¯¯",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"ÕËºÅÒÑ×¢²á","´íÎó",JOptionPane.ERROR_MESSAGE);
+                } else {
+                    executeSql("insert into bank.client(account,name,password) value ('" + accoun + "','" + name + "','" + passwd + "');");
+                    JOptionPane.showMessageDialog(null,"¿ª»§³É¹¦","ĞÅÏ¢",JOptionPane.INFORMATION_MESSAGE);
                 }
-                executeSql("insert into bank.client(account,name,password) value ('"+accoun+"','"+name+"','"+passwd+"');");
-
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
-            //JOptionPane.showMessageDialog(null,"è´¦å·å·²æ³¨å†Œ","é”™è¯¯",JOptionPane.ERROR_MESSAGE);
-            //todoï¼šæ‰§è¡Œæ•°æ®åº“æ’å…¥æ“ä½œ
+            //JOptionPane.showMessageDialog(null,"ÕËºÅÒÑ×¢²á","´íÎó",JOptionPane.ERROR_MESSAGE);
+            //todo£ºÖ´ĞĞÊı¾İ¿â²åÈë²Ù×÷
         });
     }
 }
