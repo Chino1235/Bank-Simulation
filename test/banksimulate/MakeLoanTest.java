@@ -16,7 +16,7 @@ public class MakeLoanTest {
     @Before
     public void setUp() throws Exception {
         new MakeLoan();
-        SplittableRandom input = new SplittableRandom();
+
     }
 
     @After
@@ -28,7 +28,9 @@ public class MakeLoanTest {
     public void loan() {
 
         System.out.println("请输入贷款本金：");
-        Scanner input=new Scanner(System.in);
+
+
+        Random input = new Random(10);
         double invest = input.nextDouble();     //贷款本金
 
         System.out.println("请输入年利率：(例如：5.25%就是0.0525)");
