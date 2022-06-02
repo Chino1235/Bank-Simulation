@@ -8,17 +8,6 @@ import static org.junit.Assert.*;
 
 public class AdministratorTest {
 
-    @Test
-    public void clientManagerTest() {
-        clientManager();
-        assertEquals(1,1);
-    }
-
-    @Test
-    public void financialProdManager() {
-        financialProdManager();
-        assertEquals(1,1);
-    }
 
     @Test
     public void menu() {
@@ -28,6 +17,15 @@ public class AdministratorTest {
 
     @Test
     public void adminLoginTest() {
-
+        String trueAcc = "root";
+        String truePass = "root";
+        boolean success = adminLogin(trueAcc,truePass);
+        assertTrue(success);
+        String falseAcc = "root1";
+        String falsePass="root1";
+        boolean false1 = adminLogin(falseAcc,falsePass);
+        assertFalse(false1);
+        boolean false2=adminLogin(trueAcc,falsePass);
+        assertFalse(false2);
     }
 }
