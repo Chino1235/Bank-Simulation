@@ -210,7 +210,7 @@ public class Simulator {
                     }
                 }
                 case 8:{
-                    String password = "666666";
+                    String password = "000000";
                     System.out.println("«Î ‰»Îæ…√‹¬Î");
                     String oldpassword = sc.nextLine();
                     if (oldpassword == password){
