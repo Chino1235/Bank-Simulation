@@ -69,17 +69,11 @@ public class Administrator {
         System.out.println("0.退出系统");
     }
 
-    public static boolean adminLogin(){
+    public static boolean adminLogin(String name,String password){
         //todo:无需访问数据库
-        String name;
         String name1 = "root";
-        String password;
         String password1 = "root";
         Scanner sc = new Scanner(System.in);
-        System.out.println("请输入管理员账号：");
-        name = sc.nextLine();
-        System.out.println("请输入密码：");
-        password = sc.nextLine();
 
         if (name.equals(name1)) {
             if (password.equals(password1)) {
@@ -94,7 +88,11 @@ public class Administrator {
 
     public static void main(String[] args) {
         System.out.println("欢迎使用村镇银行管理端，请先登录");
-        if(adminLogin()){
+        System.out.println("请输入管理员账号：");
+        String name = sc.nextLine();
+        System.out.println("请输入密码：");
+        String password = sc.nextLine();
+        if(adminLogin(name,password)){
             int option =1;
             while(option != 0){
                 menu();
