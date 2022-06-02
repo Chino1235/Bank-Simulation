@@ -83,7 +83,7 @@ public class ClientOpenAccount {
             //JOptionPane.showMessageDialog(null,"两次密码输入不一致","错误",JOptionPane.ERROR_MESSAGE);
             //todo:判断账号是否已注册，若已注册弹出
             try {
-                if(!accountExist(accoun)){
+                if(accountExist(accoun)){
                     JOptionPane.showMessageDialog(null,"账号已注册","错误",JOptionPane.ERROR_MESSAGE);
                 } else {
                     executeSql("insert into bank.client(account,name,password) value ('" + accoun + "','" + name + "','" + passwd + "');");
