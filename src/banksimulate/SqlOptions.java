@@ -128,8 +128,6 @@ public class SqlOptions {
         conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
         stat =conn.createStatement();
         resultSet = stat.executeQuery(sql);
-        stat.close();
-        conn.close();
         return resultSet;
     }
 
@@ -142,8 +140,6 @@ public class SqlOptions {
         conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
         stat =conn.createStatement();
         resultSet = stat.executeQuery(sql);
-        stat.close();
-        conn.close();
         return resultSet;
     }
 
@@ -156,8 +152,6 @@ public class SqlOptions {
         conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
         stat =conn.createStatement();
         resultSet = stat.executeQuery(sql);
-        stat.close();
-        conn.close();
         return resultSet;
     }
 
@@ -170,8 +164,6 @@ public class SqlOptions {
         conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
         stat =conn.createStatement();
         resultSet = stat.executeQuery(sql);
-        stat.close();
-        conn.close();
         return resultSet;
     }
 
