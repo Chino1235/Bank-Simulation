@@ -7,7 +7,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class ClientMainForm {
-    public Button queryProf = new Button("余额查询");
+
     public Button withdrawAppointment = new Button("预约取款");
     public Button depositAppointment = new Button("预约存款");
     public Button financialProducts = new Button("购买理财");
@@ -33,7 +33,7 @@ public class ClientMainForm {
         mainFrame.add(pleft,BorderLayout.WEST);
         mainFrame.add(pright,BorderLayout.EAST);
         mainFrame.add(welcome,BorderLayout.NORTH);
-        pleft.add(queryProf);
+
         pleft.add(withdrawAppointment);
         pleft.add(depositAppointment);
         pleft.add(financialProducts);
@@ -57,9 +57,7 @@ public class ClientMainForm {
                 System.exit(0);
             }
         });
-        queryProf.addActionListener(e -> {
 
-        });
 
         /*
          * 取款预约
