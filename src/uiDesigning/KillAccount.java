@@ -9,9 +9,9 @@ import java.sql.SQLException;
 import static banksimulate.SqlOptions.*;
 
 public class KillAccount {
-    Label name = new Label("å§“åï¼š");
-    Label acc = new Label("è´¦å·ï¼š");
-    Label pass = new Label("å¯†ç ï¼š");
+    Label name = new Label("ĞÕÃû£º");
+    Label acc = new Label("ÕËºÅ£º");
+    Label pass = new Label("ÃÜÂë£º");
 
 
     TextField clientName = new TextField();
@@ -19,7 +19,7 @@ public class KillAccount {
     TextField password = new TextField();
 
 
-    Button submit = new Button("æäº¤");
+    Button submit = new Button("Ìá½»");
 
     Panel p0 = new Panel();
     Panel p1 = new Panel();
@@ -64,25 +64,25 @@ public class KillAccount {
             String passwd=password.getText();
             try {
                 double profile=queryProfile(accountt);
-//todo:æŸ¥è¯¢è´¦å·æ˜¯å¦å­˜åœ¨ï¼Œè‹¥ä¸å­˜åœ¨å¼¹çª—æç¤ºï¼ˆå¼¹çª—æˆ‘æ¥å†™ï¼‰
+//todo:²éÑ¯ÕËºÅÊÇ·ñ´æÔÚ£¬Èô²»´æÔÚµ¯´°ÌáÊ¾£¨µ¯´°ÎÒÀ´Ğ´£©
                 if(!accountExist(accountt)){
-                    JOptionPane.showMessageDialog(null,"è´¦å·å·²æ³¨å†Œ","é”™è¯¯",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"ÕËºÅÒÑ×¢²á","´íÎó",JOptionPane.ERROR_MESSAGE);
                 }
-//ToDoï¼šç¡®è®¤ä½™é¢ä¸º0ï¼Œè‹¥ä¸ä¸º0å¼¹çª—æç¤ºï¼ˆå¼¹çª—æˆ‘æ¥å†™ï¼‰
+//ToDo£ºÈ·ÈÏÓà¶îÎª0£¬Èô²»Îª0µ¯´°ÌáÊ¾£¨µ¯´°ÎÒÀ´Ğ´£©
                 if(profile!=0){
-                    JOptionPane.showMessageDialog(null,"ä½™é¢ä¸ä¸º0","é”™è¯¯",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Óà¶î²»Îª0","´íÎó",JOptionPane.ERROR_MESSAGE);
                 }
-//ToDoï¼šç¡®è®¤å¯†ç æ­£ç¡®ï¼Œè‹¥ä¸æ­£ç¡®å¼¹çª—
+//ToDo£ºÈ·ÈÏÃÜÂëÕıÈ·£¬Èô²»ÕıÈ·µ¯´°
                 String passwd1=queryPassword(accountt);
                 if(!passwd1.equals(passwd)){
-                    JOptionPane.showMessageDialog(null,"å¯†ç ä¸æ­£ç¡®","é”™è¯¯",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"ÃÜÂë²»ÕıÈ·","´íÎó",JOptionPane.ERROR_MESSAGE);
                 }
-//ToDoï¼šç¡®è®¤å§“åæ­£ç¡®ï¼Œè‹¥ä¸æ­£ç¡®ï¼Œå¼¹çª—
+//ToDo£ºÈ·ÈÏĞÕÃûÕıÈ·£¬Èô²»ÕıÈ·£¬µ¯´°
                 String name1=queryName(accountt);
                 if(!name1.equals(name)){
-                    JOptionPane.showMessageDialog(null,"å§“åä¸æ­£ç¡®","é”™è¯¯",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"ĞÕÃû²»ÕıÈ·","´íÎó",JOptionPane.ERROR_MESSAGE);
                 }
-//ToDoï¼šæ‰§è¡Œæ•°æ®åº“åˆ é™¤æ“ä½œ
+//ToDo£ºÖ´ĞĞÊı¾İ¿âÉ¾³ı²Ù×÷
                 executeSql("delete from bank.client where account='"+accountt+"';");
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
