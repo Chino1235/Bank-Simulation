@@ -99,4 +99,7 @@ public class DailyPaymentForm {
             }
         });
     }
+    public static void main(String[] args) {
+        new DailyPaymentForm();
+    }
 }
