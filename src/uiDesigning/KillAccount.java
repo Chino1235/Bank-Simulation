@@ -63,28 +63,31 @@ public class KillAccount {
             String name = clientName.getText();
             String passwd=password.getText();
             try {
+                String passwd1=queryPassword(accountt);
+                String name1=queryName(accountt);
                 double profile=queryProfile(accountt);
 //todo:查询账号是否存在，若不存在弹窗提示（弹窗我来写）
                 if(!accountExist(accountt)){
                     JOptionPane.showMessageDialog(null,"账号已注册","错误",JOptionPane.ERROR_MESSAGE);
                 }
 //ToDo：确认余额为0，若不为0弹窗提示（弹窗我来写）
-                if(profile!=0){
+                else if(profile!=0){
                     JOptionPane.showMessageDialog(null,"余额不为0","错误",JOptionPane.ERROR_MESSAGE);
                 }
 //ToDo：确认密码正确，若不正确弹窗
-                String passwd1=queryPassword(accountt);
-                if(!passwd1.equals(passwd)){
+
+                else if(!passwd1.equals(passwd)){
                     JOptionPane.showMessageDialog(null,"密码不正确","错误",JOptionPane.ERROR_MESSAGE);
                 }
-//ToDo：确认姓名正确，若不正确，弹窗
-                String name1=queryName(accountt);
-                if(!name1.equals(name)){
+//ToDo：确认姓名正确，若不正确，弹
+                else if(!name1.equals(name)){
                     JOptionPane.showMessageDialog(null,"姓名不正确","错误",JOptionPane.ERROR_MESSAGE);
                 }
 //ToDo：执行数据库删除操作
-                executeSql("delete from bank.client where account='"+accountt+"';");
-                JOptionPane.showMessageDialog(null,"销户成功","信息",JOptionPane.INFORMATION_MESSAGE);
+                else {
+                    executeSql("delete from bank.client where account='" + accountt + "';");
+                    JOptionPane.showMessageDialog(null, "销户成功", "信息", JOptionPane.INFORMATION_MESSAGE);
+                }
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             } catch (SQLException ex) {
