@@ -79,6 +79,8 @@ public class MakeLoan {
         double monthRate = yearRate/12;   //ÔÂÀûÂÊ
         return (invest* monthRate * Math.pow(1+monthRate,month))/(Math.pow(1+monthRate,month)-1);
     }
+
+
 }
 
 

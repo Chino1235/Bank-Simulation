@@ -11,6 +11,13 @@ import java.util.SplittableRandom;
 import static org.junit.Assert.*;
 
 public class MakeLoanTest {
+    public static void main(String[] args){
+        MakeLoan makeLoan1 = new MakeLoan();
+        Scanner scanner = new Scanner(System.in);
+
+    }
+
+
     MakeLoan makeLoan = new MakeLoan();
 
     @Before
@@ -26,20 +33,20 @@ public class MakeLoanTest {
 
     @Test
     public void loan() {
+        Random r = new Random();
 
         System.out.println("请输入贷款本金：");
 
 
-        Random input = new Random(10);
-        double invest = input.nextDouble();     //贷款本金
+        double invest = r.nextInt(10)+10;    //贷款本金
 
         System.out.println("请输入年利率：(例如：5.25%就是0.0525)");
-        double yearRate = input.nextDouble();     //年利率
+        double yearRate = r.nextInt(10)+10;      //年利率
 
         double monthRate = yearRate/12;   //月利率
         System.out.println("请输入借款月数：(例如：30年就是360)");
 
-        int month = input.nextInt();  //还款月数
+        int month = r.nextInt(10)+10;   //还款月数
 
         System.out.println("本金-->"+invest+"   年利率--->"+yearRate*100+"%"+"  期限--->"+month+"个月");
         System.out.println("--------------------------------------------");
