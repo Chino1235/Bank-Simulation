@@ -6,7 +6,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 
-import static banksimulate.Simulator.*;
 import static banksimulate.SqlOptions.executeSql;
 
 public class AccountMgrForm {
