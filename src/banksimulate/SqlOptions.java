@@ -27,18 +27,20 @@ public class SqlOptions {
         }*/
     }
 
-    public static double queryProfile(String account) throws ClassNotFoundException,SQLException{
+    public static double queryProfile(String account) throws ClassNotFoundException,SQLException {
         //try {
         Connection conn = null;
         Statement stat = null;
         ResultSet resultSet = null;
-        String sql = "SELECT bank.client.profile from client where account='"+account+"';";
+        String sql = "SELECT bank.client.profile from client where account='" + account + "';";
         Class.forName(DBDRIVER);
-        conn = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
-        stat =conn.createStatement();
+        conn = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
+        stat = conn.createStatement();
         resultSet = stat.executeQuery(sql);
-        resultSet.next();
-        double profile = resultSet.getDouble("profile");
+        double profile = 0;
+        while (resultSet.next()) {
+            profile = resultSet.getDouble("profile");
+        }
         stat.close();
         conn.close();
         return profile;

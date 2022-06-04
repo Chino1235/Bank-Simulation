@@ -72,6 +72,7 @@ public class ClientLoginForm {
                     JOptionPane.showMessageDialog(null,"√‹¬Î¥ÌŒÛ","¥ÌŒÛ",JOptionPane.ERROR_MESSAGE);
                 } else{
                     new ClientMainForm();
+                    mainFrame.setVisible(false);
                 }
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();

@@ -72,7 +72,7 @@ public class TransferForm {
                 double profileOfThis = queryProfile(thisAccount);
                 if(profileOfThis<profile){
                     JOptionPane.showMessageDialog(null,"Óà¶î²»×ã","´íÎó", JOptionPane.ERROR_MESSAGE);
-                } else if(accountExist(thisAccount) || accountExist(account)) {
+                } else if(!accountExist(thisAccount) || !accountExist(account)) {
                     JOptionPane.showMessageDialog(null,"ÕËºÅÊäÈë´íÎó","´íÎó", JOptionPane.ERROR_MESSAGE);
                 } else {
                     double accProfile = queryProfile(account);
@@ -81,11 +81,12 @@ public class TransferForm {
                     double accThisProfileNow = accThisProfile - profile;
                     executeSql("UPDATE bank.client SET profile='"+accProfileNow+"' WHERE account='"+account+"'; ");
                     executeSql("UPDATE bank.client SET profile='"+accThisProfileNow+"' WHERE account='"+thisAccount+"'; ");
+                    JOptionPane.showMessageDialog(null,"×ªÕË³É¹¦","ÐÅÏ¢",JOptionPane.INFORMATION_MESSAGE);
                 }
-                String logsqlout = "insert into bank_log.banklog(account,profile,option) values ('"+thisAccount+"','"+profile+"','transfer out');";
-                String logsqlin = "insert into bank_log.banklog(account,profile,option) values ('"+account+"','"+profile+"','transfer in');";
-                executeSql(logsqlout);
-                executeSql(logsqlin);
+                String logsqlout = "insert into bank_log.banklog(account,profile,option) value ('"+thisAccount+"',"+profile+",'transfer out');";
+                String logsqlin = "insert into bank_log.banklog(account,profile,option) value ('"+account+"',"+profile+",'transfer in');";
+                //executeSql(logsqlout);
+                //executeSql(logsqlin);
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(null,"ÏµÍ³´íÎó","´íÎó",JOptionPane.ERROR_MESSAGE);
